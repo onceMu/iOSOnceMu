@@ -19,9 +19,9 @@ fastlane 自动化安装
 ​	init 之后会选择安装模式，四种安装模式
 
  	1. automate screenshots
- 	2. automate beta distribution to TestFlight、自动配置testflight
- 	3. automate app store distribution 自动发布到appstore
- 	4. manual setup、手动配置内容
+   2. automate beta distribution to TestFlight、自动配置testflight
+   3. automate app store distribution 自动发布到appstore
+   4. manual setup、手动配置内容
 
 4.选择不同设置有不同的操作步骤，手动配置内容
 
@@ -61,14 +61,14 @@ fastlane 自动化安装
 
 ​	
 
-| 执行顺序 | 方法名      | 说明                                         |
-| -------- | ----------- | -------------------------------------------- |
-| 1        | before_all  | 在执行lane之前只执行一次                     |
-| 2        | before_each | 每次执行lane之前都会执行一次                 |
-| 3        | lane        | 自定义的任务                                 |
-| 4        | after_each  | 每次执行lanee之后都会执行一次                |
-| 5        | after_all   | 在执行lane成功结束之后执行一次               |
-| 6        | error       | 在执行上述情况任意环境报错都会终止并执行一次 |
+| 执行顺序 | 方法名         | 说明                     |
+| ---- | ----------- | ---------------------- |
+| 1    | before_all  | 在执行lane之前只执行一次         |
+| 2    | before_each | 每次执行lane之前都会执行一次       |
+| 3    | lane        | 自定义的任务                 |
+| 4    | after_each  | 每次执行lanee之后都会执行一次      |
+| 5    | after_all   | 在执行lane成功结束之后执行一次      |
+| 6    | error       | 在执行上述情况任意环境报错都会终止并执行一次 |
 
 
 
@@ -96,4 +96,23 @@ fastlane 自动化安装
   			   build_app(workspace:"xxxx.xcworkspace",scheme:"xxxxx",export_method:"ad-hoc",output_directory:"./fastlane/package",configuration:"Release")
       pgyer(api_key:"xxxxxx",user_key:"xxxxxxxxxxx")
   end
+
+
+
+安装过程中遇到的几个问题
+
+1. ruby版本号不对。rvm list koown 可以查找到所有的ruby版本号
+
+   rvm install 版本号 安装相应的版本号
+
+   rvm use 版本号 指定ruby 版本号
+
+2. fastlane 安装有问题
+
+   1. rvm @global do gem uninstall fastlane
+   2. gem uninstall fastlane
+   3. gem install fastlane
+
+3. fastlane add_plugin xxxx 忘记添加对应的action插件
+
 
