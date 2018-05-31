@@ -606,6 +606,10 @@ NSCache
 
 
 
+UIKit 只有一个上下文，可以通过UIGraphicsGetCurrentContenxt()来获取。UIKit总是获取的最顶层的上下文。也可以用UIGraphicsPushContext()和UIGraphicsPopContext()来在UIKit的堆栈中推进或取出上下文。
+
+
+
 ​	
 
 
