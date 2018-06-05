@@ -64,7 +64,7 @@ objc_msgSend 在调用过程中会传递两个隐藏的参数：
 
 
 
-获取方法地址
+获取方法地
 
 避免动态绑定的唯一方法就是获取方法的地址然后直接调用它，就好像函数一样。在一些罕见的情况下，你可能想要特定的方法按书序执行很多次但又想避免每次方法执行时发消息的开销。
 
@@ -76,13 +76,26 @@ objc_msgSend 在调用过程中会传递两个隐藏的参数：
 
 有时候，可能需要动态地给一个方法提供实现。
 
-https://developer.apple.com/documentation/objectivec/objective_c_runtime
-
-https://blog.csdn.net/syd_programming/article/details/49340955
-https://artandlogic.com/2014/01/digging-into-the-objective-c-runtime/
-
-看完。
 
 
+isa ivar指示特定对象是什么类。每个OC对象必须从isa 指针开始，否则运行时系统就不知道如何使用该类。每个特定类型的所有内容都包含在isa 指针里面。
+
+
+
+Classes 
+
+1.isa 指针，isa指针允许类能像对象一样运行；
+
+2.superClass , 指向superClass的指针，给出了正确的类层次结构
+
+3.类的一些基本信息；
+
+4.实例变量列表，方法列表，协议列表。实例变量，方法，协议都是可以在运行时进行访问，也可以被修改。
+
+5.Cache。每次发送消息的时候，运行时必须通过查找目标对象类中的方法列表里加查找要调用的实际代码。但是，方法是存储在一个很大的单链表中的，所以查找速度非常慢。cache 是一个hash table，第一次发送消息的时候，会很慢，需要消耗查找时间，但是查找结果会被放入到hash table。后续的方法调用将会在hash table中找到相关的方法，可以加快查找。
+
+
+
+Runtime 实际应用
 
 ​	
