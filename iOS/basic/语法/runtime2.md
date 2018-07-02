@@ -147,7 +147,25 @@ id returnValue = objc_msgSend(someObject,@selector(messageName:),parameeter);
 
 
 
-https://blog.csdn.net/qq_36819141/article/details/75125648
+
+
+例子：
+
+-(NSString *)movieTitle {
+
+​	return @"dsdsksk";
+
+}
+
+typedef struct objc_selector *SEL;
+
+SEL aSel = @selector(movieTitle);
+
+
+
+
+
+
 
 
 
