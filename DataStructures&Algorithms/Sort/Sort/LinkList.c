@@ -147,4 +147,11 @@ void deletePositionNode(struct Node *head,int position) {
     temp ->next = next;
 }
 
+//翻转链表
+//1->2->3->4-5->NULL
+//5->4->3->2->1->NULL
+void reverseLinkList(struct Node *head) {
+    
+}
+
 
