@@ -151,7 +151,48 @@ void deletePositionNode(struct Node *head,int position) {
 //1->2->3->4-5->NULL
 //5->4->3->2->1->NULL
 void reverseLinkList(struct Node *head) {
+    struct Node *pre = NULL;
+    struct Node *current = head;
+    struct Node *next = NULL;
     
+    while (current != NULL) {
+        next = current -> next;
+        current ->next = pre;
+        pre = current;
+        current = next;
+    }
+    head = pre;
+}
+
+//旋转链表
+//给定一个链表，10->20->30->40->50->60 给定一个k ==4，将链表旋转成 50->60->10->20->30->40;
+//思路:
+//1.先找到k节点，然后将k+1节点变成头结点，将原来的尾节点的next 指向原来的头结点
+void rotateLinkList(struct Node *head,int k) {
+    if (k == 0) {
+        return;
+    }
+    struct Node *temp = head;
+    int count = 1;
+    //先找到当前 k节点
+    while (count < k && temp != NULL) {
+        temp = temp -> next;
+        count ++;
+    }
+    // 如果k 节点是空的，则返回
+    if (temp == NULL) {
+        return;
+    }
+    //保存当前的k节点
+    struct Node *kNode = temp;
+    //继续循环，找到最后一个节点
+    while (temp -> next != NULL) {
+        temp = temp -> next;
+    }
+    //将最后一个节点指针指向头结点
+    temp -> next = head;
+    head = kNode -> next;
+    kNode -> next = NULL;
 }
 
 
