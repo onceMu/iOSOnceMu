@@ -201,3 +201,132 @@ void rotateLinkList(struct Node **head,int k) {
     *head = kNode -> next;
     kNode -> next = NULL;
 }
+
+//合并两个有序的链表  递归
+struct Node *mergeTwoLink(struct Node *a,struct Node *b) {
+    struct Node *result = NULL;
+    if (a == NULL) {
+        return (b);
+    }else if (b == NULL) {
+        return (a);
+    }
+    if (a -> data <= b ->data) {
+        result = a;
+        result ->next = mergeTwoLink(a->next, b);
+    }else {
+        result = b;
+        result ->next = mergeTwoLink(a, b->next);
+    }
+    return (result);
+};
+
+////合并两个有序链表
+//struct Node *mergeTowLinkSecond(struct Node *a, struct Node *b) {
+//    struct Node *result = NULL;
+//    struct Node **lastRef = &result;
+//    while (1) {
+//        if (a == NULL) {
+//            *lastRef = b;
+//            break;
+//        }else if (b == NULL) {
+//            *lastRef = a;
+//            break;
+//        }
+//        if (a ->data <= b ->data) {
+//            MoveNode(lastRef, &a);
+//        }else {
+//            MoveNode(lastRef, &b);
+//        }
+//        lastRef = &((*lastRef) ->next);
+//    }
+//    return  (result);
+//}
+//
+////移动
+//void MoveNode(struct Node **destRef,struct Node ** sourceRef) {
+//    struct Node *temp = *sourceRef;
+//    assert(temp != NULL);
+//    *sourceRef = temp ->next;
+//    temp ->next = *destRef;
+//    *destRef = temp;
+//}
+
+
+
+
+///**
+// * Definition for singly-linked list.
+// * struct ListNode {
+// *     int val;
+// *     struct ListNode *next;
+// * };
+// */
+//struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
+//    struct ListNode *result = NULL;
+//    if(l1 == NULL) {
+//        return (l2);
+//    }else if(l2 == NULL) {
+//        return (l1);
+//    }
+//    if (l1 -> val <= l2 ->val) {
+//        result = l1;
+//        result ->next = mergeTwoLists(l1 ->next,l2);
+//    }else {
+//        result = l2;
+//        result ->next = mergeTwoLists(l1,l2 ->next);
+//    }
+//    return (result);
+//}
+
+
+//删除有序链表中的重复节点
+void removeDuplicates(struct Node *head) {
+    struct Node *current = head;
+    struct Node *next_next;
+    if (current == NULL) {
+        return;
+    }
+    while (current -> next != NULL) {
+        if (current -> data == current ->next->data) {
+            next_next = current ->next ->next;
+            free(current ->next);
+        }else {
+            current = current ->next;
+        }
+    }
+}
+
+//
+//bool hasCycle(struct ListNode *head) {
+//    struct ListNode *fast = head;
+//    struct ListNode *solw = head;
+//    if(head == NULL) {
+//        return false;
+//    }
+//    if(head ->next == NULL) {
+//        return false;
+//    }
+//    while (fast->next != NULL && fast->next->next != NULL) {
+//        fast = fast ->next ->next;
+//        solw = solw ->next;
+//        if (fast == solw) {
+//            return true;
+//        }
+//    }
+//    return false;
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

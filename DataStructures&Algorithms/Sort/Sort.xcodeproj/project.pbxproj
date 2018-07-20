@@ -17,6 +17,7 @@
 		8B72575E20F5B419003903AB /* SortUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72575D20F5B419003903AB /* SortUITests.m */; };
 		8B72576D20F5B426003903AB /* Sort.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B72576C20F5B426003903AB /* Sort.c */; };
 		8B72577020F5E152003903AB /* StringInterview.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B72576F20F5E152003903AB /* StringInterview.c */; };
+		8B90186921017FFD00F0024E /* LinkListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90186821017FFD00F0024E /* LinkListNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		8B72576E20F5E152003903AB /* StringInterview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringInterview.h; sourceTree = "<group>"; };
 		8B72576F20F5E152003903AB /* StringInterview.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = StringInterview.c; sourceTree = "<group>"; };
 		8B72577120F5F0B0003903AB /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
+		8B90186721017FFD00F0024E /* Sort-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sort-Bridging-Header.h"; sourceTree = "<group>"; };
+		8B90186821017FFD00F0024E /* LinkListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkListNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 				8B72573A20F5B416003903AB /* AppDelegate.m */,
 				8B72573C20F5B416003903AB /* ViewController.h */,
 				8B72573D20F5B416003903AB /* ViewController.m */,
+				8B90186821017FFD00F0024E /* LinkListNode.swift */,
 				8B72576B20F5B426003903AB /* Sort.h */,
 				8B72576C20F5B426003903AB /* Sort.c */,
 				8B72576E20F5E152003903AB /* StringInterview.h */,
@@ -122,6 +126,7 @@
 				8B72574420F5B418003903AB /* LaunchScreen.storyboard */,
 				8B72574720F5B418003903AB /* Info.plist */,
 				8B72574820F5B418003903AB /* main.m */,
+				8B90186721017FFD00F0024E /* Sort-Bridging-Header.h */,
 			);
 			path = Sort;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				TargetAttributes = {
 					8B72573520F5B416003903AB = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					8B72574D20F5B419003903AB = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -275,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B72573E20F5B416003903AB /* ViewController.m in Sources */,
+				8B90186921017FFD00F0024E /* LinkListNode.swift in Sources */,
 				8B72574920F5B418003903AB /* main.m in Sources */,
 				8B72573B20F5B416003903AB /* AppDelegate.m in Sources */,
 				8B72577020F5E152003903AB /* StringInterview.c in Sources */,
@@ -448,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRD4DZXNH8;
 				GCC_INPUT_FILETYPE = automatic;
@@ -458,6 +466,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NOH.Sort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sort/Sort-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -467,6 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRD4DZXNH8;
 				GCC_INPUT_FILETYPE = automatic;
@@ -477,6 +489,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = NOH.Sort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Sort/Sort-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -484,6 +498,7 @@
 		8B72576620F5B419003903AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRD4DZXNH8;
@@ -503,6 +518,7 @@
 		8B72576720F5B419003903AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRD4DZXNH8;
@@ -522,6 +538,7 @@
 		8B72576920F5B419003903AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRD4DZXNH8;
 				INFOPLIST_FILE = SortUITests/Info.plist;
@@ -540,6 +557,7 @@
 		8B72576A20F5B419003903AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRD4DZXNH8;
 				INFOPLIST_FILE = SortUITests/Info.plist;
