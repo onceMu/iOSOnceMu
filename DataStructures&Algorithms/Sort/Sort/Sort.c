@@ -25,8 +25,8 @@ void selectionSort(int arr[],int n ) {
             if (arr[j] < arr[min_idx]) {
                 min_idx = j;
             }
-            swap(&arr[min_idx], &arr[i]);
         }
+        swap(&arr[min_idx], &arr[i]);
     }
 }
 
@@ -101,8 +101,65 @@ void shellSort(int arr[],int n) {
     }
 }
 
+void swipTwoNumber(int *xp,int *yp) {
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
 
-//归并排序 将两个有序的数组归并成一个有序数组
+//冒泡排序，从头开始往后进行比较，如果前一个比后一个大，则交换两个值，这样一趟之后最大值会排在最后位置
+void bubbleCurrentSort(int arr[],int n) {
+    int i,j;
+    for (i = 0; i<n; i++) {
+        for (j = 1; j< n-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                swipTwoNumber(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
+//链表数据进行冒泡排序，除了需要比较值之外，还要改变链表指针的改变
+void bubbleSSSSS (int arr[],int n ){
+    for (int i = 0; i< n; i++) {
+        for (int j = 1; j< n-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                swipTwoNumber(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
+//选择排序，最核心思想是每次找到未排序序列中的最大（最小）值所在的index，然后交换位置
+void selectedSSSSS (int arr[],int n ) {
+    int i ,j,min_idx;
+    for (i = 0;  i < n ; i ++) {
+        min_idx = i;
+        for (j = 1 ; j < n-1; j++) {
+            if (arr[min_idx] > arr[j]) {
+                min_idx = j;
+            }
+        }
+        swipTwoNumber(&arr[i], &arr[min_idx]);
+    }
+}
+
+//插入排序,将未排序的数列中第一个元素，插入到已排序数列中的合适位置，从已排序的数列中最后一个元素往前开始遍历
+void insertSSSSSS (int arr[],int n) {
+    int preIndex,currentIndex;
+    for (int i = 1; i<n ; i++) {
+        preIndex = i - 1;
+        currentIndex = arr[i];
+        while (preIndex >=0 && arr[preIndex] > currentIndex) {
+            arr[preIndex + 1] = arr[preIndex];
+            preIndex --;
+        }
+        arr[preIndex + 1] = currentIndex;
+    }
+}
+
+
+
 
 
 

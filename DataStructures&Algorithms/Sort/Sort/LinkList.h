@@ -296,27 +296,193 @@ void removeDuplicates(struct Node *head) {
     }
 }
 
-//
-//bool hasCycle(struct ListNode *head) {
-//    struct ListNode *fast = head;
-//    struct ListNode *solw = head;
-//    if(head == NULL) {
-//        return false;
-//    }
-//    if(head ->next == NULL) {
-//        return false;
-//    }
-//    while (fast->next != NULL && fast->next->next != NULL) {
-//        fast = fast ->next ->next;
-//        solw = solw ->next;
-//        if (fast == solw) {
-//            return true;
-//        }
-//    }
-//    return false;
-//}
+//删除优有序链表中的重复节点
+struct Node * removeDuplicatesNode(struct Node *head) {
+    struct Node *current = head;
+    struct Node *pre;
+    while (current != NULL && current ->next != NULL) {
+        if (current ->data == current ->next ->data) {
+            pre = current ->next ->next;
+            free(current ->next);
+            current ->next = pre;
+        }
+        current = current ->next;
+    }
+    return head;
+}
 
 
+
+//判断链表是否有环
+bool hasCycle(struct Node *head) {
+    struct Node *fast = head;
+    struct Node *solw = head;
+    if(head == NULL) {
+        return false;
+    }
+    if(head ->next == NULL) {
+        return false;
+    }
+    while (fast->next != NULL && fast->next->next != NULL) {
+        fast = fast ->next ->next;
+        solw = solw ->next;
+        if (fast == solw) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+//判断两个链表是否相交，并且指出第一个交点
+struct Node *getIntersectionNode(struct Node *headA,struct Node *headB) {
+    if (headA == NULL || headB == NULL) {
+        return NULL;//有空链表，肯定不相交
+    }
+    struct Node *temp1 = headA;
+    struct Node *temp2 = headB;
+    int len1 = 0;
+    int len2 = 0;
+    int diff = 0;
+    //先找出尾节
+    while (temp1 ->next != NULL) {
+        temp1 = temp1 ->next;
+        len1 ++;
+    }
+    while (temp2 ->next != NULL) {
+        temp2 = temp2 ->next;
+        len2 ++;
+    }
+    if (temp1 != temp2) {
+        return NULL;
+    }
+    //如果尾节点相同，则证明相交
+    diff = abs(len1 - len2);
+    if (len1 > len2) {
+        temp1 = headA;
+        temp2 = headB;
+    }else {
+        temp1 = headB;
+        temp2 = headA;
+    }
+    //找出两个链表的差值，找到差值开始的节点
+    for (int i = 0; i<diff; i++) {
+        temp1 = temp1 ->next;
+    }
+    while (temp1 != temp2) {
+        temp1 = temp1 ->next;
+        temp2 = temp2 ->next;
+    }
+    return  temp1;
+}
+
+//判断两个链表是否有环,并且给出第一个相交的节点
+struct Node *getIntersectionCycleNode (struct Node *headA,struct Node *headB) {
+    if (headA == NULL || headB == NULL) {
+        return  NULL;
+    }
+    struct Node *temp = headA;
+    //找到a的尾节点
+    while(temp ->next != NULL) {
+        temp = temp ->next;
+    }
+    //将a的尾节点指向b
+    temp ->next = headB;
+    
+    struct Node *fast = temp;
+    struct Node *solw = temp;
+    while (fast -> next != NULL && fast ->next ->next != NULL) {
+        fast = fast ->next ->next;
+        solw = solw ->next;
+        if (fast == solw) {
+            break;
+        }
+    }
+    if (fast != solw) {
+        return NULL;
+    }
+    while (temp != solw) {
+        temp = temp ->next;
+        solw = solw ->next;
+    }
+    return temp;
+}
+
+
+struct Node *mergeSortedList(struct Node *headA,struct Node *headB) {
+    if (headA == NULL) {
+        return headB;
+    }else if (headB == NULL) {
+        return headA;
+    }
+    struct Node *result = NULL;
+    if (headA ->data > headB ->data) {
+        result = headB;
+        result ->next = mergeSortedList(headA, headB ->next);
+    }else {
+        result = headA;
+        result ->next = mergeSortedList(headA ->next, headB);
+    }
+    return result;
+}
+
+//删除链表中所有值为给定值的节点
+struct Node *deleteSpecialData(struct Node *head,int val) {
+    if (head == NULL) {
+        return head;
+    }
+    struct Node *dummy=(struct Node *)malloc(sizeof(struct Node));
+    dummy ->next = head;
+    struct Node *pre = dummy;
+    struct Node *temp = head;
+    while (temp) {
+        if (temp ->data == val) {
+            pre ->next = temp ->next;
+        }else {
+            pre = temp;
+        }
+        temp = temp ->next;
+    }
+    return dummy ->next;
+}
+
+struct Node *reverseSpecialPosition(struct Node *head,int m,int n) {
+
+    //计算出Node 长度
+    if (head == NULL) {
+        return head;
+    }
+    struct Node *temp = NULL;
+    struct Node *currentM = head;
+    //第一次遍历，找到 第M个节点
+    for (int i = 0; i<m-1; i++) {
+        temp = currentM;
+        currentM = currentM ->next;
+    }
+    struct Node *end = currentM;
+    struct Node *preM = currentM;
+    //从第M个节点的下一个节点开始
+    currentM = currentM ->next;
+    for (int i = m+1; i<=n; i++) {
+        struct Node *currentNext = currentM -> next;
+        currentM ->next = preM;
+        preM = currentM;
+        currentM = currentNext;
+    }
+    //交换位置后，M节点的下一个节点是N 节点的next
+    //在上一个循环中，currentM 指向的是 N节点的next节点
+    //将M 节点指向 N的next节点
+    end ->next = currentM;
+    //现在讲N节点指向
+    if (temp) {
+        temp ->next = preM;
+    }else {
+        head = preM;
+    }
+    
+    return head;
+    
+}
 
 
 

@@ -23,7 +23,7 @@
 //将链表每K 个节点翻转一次
 //删除链表中第一个重复的节点
 //删除链表
-//
+//判断两个链表是否相交，如果相交，则指出第一个交点
 
 
 
@@ -79,120 +79,80 @@ void printMiddleLinkList(struct Node *head) {
     }
 }
 
-//对于给定的链表，指定data 为key，删除最后一个出现的指定key,如果没有包含key，返回invalid data，
-//要求O(n)
-//如1 ->3 ->4 ->5 -> 6 ->7 ->8 ->9 ->3 ->1 -> null
-//删除3 1 ->3 ->4 ->5 -> 6 ->7 ->8 ->9  ->1 -> null
-//思路
-void deleteLastKey(struct Node *head,int key) {
-    struct Node *temp = head;
-    struct Node *ptr = NULL;
-    //从头开始遍历链表，如果key存在，则将temp 赋值给 ptr
-    while (temp) {
-        if (temp -> data == key) {
-            //ptr 会指向最后一个 == key 的节点
-            ptr = temp;
+
+struct Node *mergeTwoSortedList (struct Node *l1,struct Node *l2) {
+    if (l1 == NULL) {
+        return *l2;
+    }else if (l2 == NULL) {
+        return *l1;
+    }
+    struct Node *result = NULL;
+    if (l1 ->data <= l2 ->data) {
+        result = l1;
+        result -> next = mergeTwoSortedList(l1 ->next, l2);
+    }else {
+        result = l2;
+        result -> next = mergeTwoSortedList(l1, l2 ->next);
+    }
+    return result;
+}
+
+//检查链表是否有环
+bool checkNodeHasCycle (struct Node *head) {
+    struct Node *slow = head;
+    struct Node *fast = head;
+    while (fast && fast ->next) {
+        slow = slow ->next;
+        fast = fast ->next ->next;
+        if (slow == fast) {
+            return true;
         }
-        temp = temp -> next;
     }
-    //如果ptr 不为空并且 ptr的下一个节点也不为空，即ptr 不是最后一个节点
-    if (ptr != NULL && ptr ->next != NULL) {
-        temp = head;
-        while (temp -> next != ptr) {
-            temp = temp -> next;
-        }
-        temp -> next = NULL;
-    }
-    if (ptr != NULL && ptr == NULL) {
-        ptr -> data = ptr ->next ->data;
-        temp = ptr ->next;
-        ptr ->next = ptr ->next ->next;
-        free(temp);
-    }
+    return false;
 }
 
-void displyDeletedList(struct Node *head) {
-    struct Node* temp = head;
-    if (head == NULL) {
-        printf("NULL\n");
-        return;
+struct Node *checkTwoNodeIntersection(struct Node *headA,struct Node *headB) {
+    if (headA == NULL || headB == NULL) {
+        return NULL;
     }
-    while (temp != NULL) {
-        printf("%d --> ", temp->data);
-        temp = temp->next;
+    struct Node *temp1 = headA;
+    struct Node *temp2 = headB;
+    int len1 = 0;
+    int len2 = 0;
+    int diff = 0;
+    while (temp1 ->next != NULL) {
+        temp1 = temp1 ->next;
+        len1 ++;
     }
-    printf("NULL\n");
+    while (temp2 ->next != NULL) {
+        temp2 = temp2 ->next;
+        len2 ++;
+    }
+    //如果两个链表的尾节点不是同一个节点，则说明不相交
+    if (temp2 != temp1) {
+        return NULL;
+    }
+    if (len1 > len2) {
+        diff = len1 - len2;
+        temp1 = headA;
+        temp2 = headB;
+    }else {
+        diff = len2 - len1;
+        temp1 = headB;
+        temp2 = headA;
+    }
+    for (int i =0; i< diff; i++) {
+        temp1 = temp1 ->next;
+    }
+    while (temp1 != temp2) {
+        temp1 = temp1 ->next;
+        temp2 = temp2 ->next;
+    }
+    return temp1;
+
 }
 
-//删除链表给定位置的节点
-void deletePositionNode(struct Node *head,int position) {
-    if (head == NULL) {
-        return;
-    }
-    struct Node *temp = head;
-    if (position == 0) {
-        head = temp ->next;
-        free(temp);
-        return;
-    }
-    for (int i =0; i<position -1; i++) {
-        temp = temp ->next;
-    }
-    //如果越界
-    if (temp == NULL || temp -> next == NULL) {
-        return;
-    }
-    struct Node *next = temp ->next->next;
-    free(temp ->next);
-    temp ->next = next;
-}
 
-//翻转链表
-//1->2->3->4-5->NULL
-//5->4->3->2->1->NULL
-void reverseLinkList(struct Node *head) {
-    struct Node *pre = NULL;
-    struct Node *current = head;
-    struct Node *next = NULL;
-    
-    while (current != NULL) {
-        next = current -> next;
-        current ->next = pre;
-        pre = current;
-        current = next;
-    }
-    head = pre;
-}
-
-//旋转链表
-//给定一个链表，10->20->30->40->50->60 给定一个k ==4，将链表旋转成 50->60->10->20->30->40;
-//思路:
-//1.先找到k节点，然后将k+1节点变成头结点，将原来的尾节点的next 指向原来的头结点
-void rotateLinkList(struct Node *head,int k) {
-    if (k == 0) {
-        return;
-    }
-    struct Node *temp = head;
-    int count = 1;
-    //先找到当前 k节点
-    while (count < k && temp != NULL) {
-        temp = temp -> next;
-        count ++;
-    }
-    // 如果k 节点是空的，则返回
-    if (temp == NULL) {
-        return;
-    }
-    //保存当前的k节点
-    struct Node *kNode = temp;
-    //继续循环，找到最后一个节点
-    while (temp -> next != NULL) {
-        temp = temp -> next;
-    }
-    //将最后一个节点指针指向头结点
-    temp -> next = head;
-    head = kNode -> next;
-    kNode -> next = NULL;
-}
-
+//链表排序
+//排序算法，
 
