@@ -111,7 +111,7 @@ void swipTwoNumber(int *xp,int *yp) {
 void bubbleCurrentSort(int arr[],int n) {
     int i,j;
     for (i = 0; i<n; i++) {
-        for (j = 1; j< n-1; j++) {
+        for (j = 1; j< n-i-1; j++) {
             if (arr[j] > arr[j+1]) {
                 swipTwoNumber(&arr[j], &arr[j+1]);
             }
@@ -122,7 +122,7 @@ void bubbleCurrentSort(int arr[],int n) {
 //链表数据进行冒泡排序，除了需要比较值之外，还要改变链表指针的改变
 void bubbleSSSSS (int arr[],int n ){
     for (int i = 0; i< n; i++) {
-        for (int j = 1; j< n-1; j++) {
+        for (int j = 0; j< n-1-i; j++) {
             if (arr[j] > arr[j+1]) {
                 swipTwoNumber(&arr[j], &arr[j+1]);
             }
@@ -157,6 +157,35 @@ void insertSSSSSS (int arr[],int n) {
         arr[preIndex + 1] = currentIndex;
     }
 }
+
+
+
+//选择排序
+void selctedSorted(int arr[],int n){
+    int i,j,min_idx;
+    for (i = 0; i< n; i++) {
+        min_idx = i;
+        for (j = 1; j< n-1; j++) {
+            if (arr[min_idx] > arr[j]) {
+                min_idx = j;
+            }
+        }
+        swipTwoNumber(&arr[i], &arr[min_idx]);
+    }
+}
+
+//冒泡排序  19861209wanxiONCE
+void bubbleSortedss(int arr[],int n ) {
+    int i,j;
+    for (i = 0; i< n; i++) {
+        for (j = 0; j<n-1-i; j++) {
+            if (arr[j] > arr[j+1]) {
+                swipTwoNumber(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
 
 
 

@@ -38,6 +38,9 @@ struct Node {
     struct Node *next;
 };
 
+struct Node * findMiddleOfLinkList(struct Node *node);
+struct Node * reverseLinkListNode(struct Node *node);
+
 //链表中插入数据
 void pushLinkList(struct Node ** head,int data){
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
@@ -485,10 +488,81 @@ struct Node *reverseSpecialPosition(struct Node *head,int m,int n) {
 }
 
 
+// leetcode 237 问题
+// Delete Node in a Linked List，删除链表中的节点
+void deleteNode (struct Node *node) {
+    if (node == NULL) {
+//        return node;
+    }
+    //分成两部分
+    //1.删除节点的值
+    //2.改变节点的next指针
+    node ->data = node ->next ->data;
+    node ->next = node ->next ->next;
+}
 
+// leetcode 234 问题
+// 判断链表是否是回文链表
+bool checkListNodeIsPalinrome(struct Node *node) {
+    if (node == NULL) {
+        return false;
+    }
+    struct Node *middleNode;
+    struct Node *leftNode;
+    struct Node *rightNode;
+    leftNode = node;
+    middleNode = findMiddleOfLinkList(node);
+    rightNode = reverseLinkListNode(middleNode);
+    while (leftNode && rightNode) {
+        if (leftNode ->data != rightNode ->data) {
+            return false;
+        }
+        leftNode = leftNode ->next;
+        rightNode = rightNode ->next;
+    }
+    return true;
+}
 
+//找到链表的中间节点
+struct Node * findMiddleOfLinkList(struct Node *node) {
+    if (node == NULL) {
+        return  NULL;
+    }
+    struct Node *fast = node;
+    struct Node *solw = node;
+    while (fast && fast ->next) {
+        fast = fast ->next ->next;
+        solw = solw ->next;
+    }
+    return solw;
+}
 
+struct Node * reverseLinkListNode(struct Node *node) {
+    if (node == NULL || node ->next == NULL) {
+        return node;
+    }
+    struct Node *temp;
+    struct Node *p,*q;
+    p = node;
+    q = node;
+    while (q) {
+        temp = q ->next;
+        q ->next = p;
+        p = q;
+        q = temp;
+    }
+    node ->next = NULL;
+    node = p;
+    return node;
+}
 
+// leetcode 19 给定n，从链表尾节点开始删除第n个节点
+struct Node *deleteNthListNode (struct Node *node,int n) {
+    if (node == NULL) {
+        return node;
+    }
+    
+}
 
 
 
