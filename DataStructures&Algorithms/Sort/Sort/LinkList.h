@@ -557,12 +557,16 @@ struct Node * reverseLinkListNode(struct Node *node) {
 }
 
 // leetcode 19 给定n，从链表尾节点开始删除第n个节点
-struct Node *deleteNthListNode (struct Node *node,int n) {
-    if (node == NULL) {
-        return node;
-    }
-    
-}
+//struct Node *deleteNthListNode (struct Node *node,int n) {
+//    if (node == NULL) {
+//        return node;
+//    }
+//
+//}
+//思路
+//1.找到链表长度t
+//2.遍历t-n之前的节点
+//3.删除第t-n节点的next节点
 
 
 

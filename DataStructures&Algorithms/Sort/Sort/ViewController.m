@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LinkList.h"
 #import "LinkListNode.swift"
+#import "TestViewController.h"
 
 
 @interface ViewController ()
@@ -20,9 +21,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(100, 100, 100, 30);
+    btn.backgroundColor = [UIColor redColor];
+    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
     
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)btnClick {
+    TestViewController *vc = [[TestViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
