@@ -92,6 +92,10 @@
         NSLog(@"哈哈哈 6");
     });
     dispatch_release(xxxQueue);
+    NSRunLoop *runloop = [NSRunLoop mainRunLoop];
+    NSRunLoop *currentLoop = [NSRunLoop currentRunLoop];
+    NSLog(@"主线程 = %@",runloop);
+    NSLog(@"当前线程 = %@",currentLoop);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -77,6 +77,7 @@ void printMiddleLinkList(struct Node *head) {
     int count = 0;
     struct Node *mid = head;
     while (head != NULL) {
+        //按照位与
         if (count & 1) {
             mid = mid -> next;
         }
@@ -299,7 +300,7 @@ void removeDuplicates(struct Node *head) {
     }
 }
 
-//删除优有序链表中的重复节点
+//删除有序链表中的重复节点
 struct Node * removeDuplicatesNode(struct Node *head) {
     struct Node *current = head;
     struct Node *pre;
@@ -476,7 +477,7 @@ struct Node *reverseSpecialPosition(struct Node *head,int m,int n) {
     //在上一个循环中，currentM 指向的是 N节点的next节点
     //将M 节点指向 N的next节点
     end ->next = currentM;
-    //现在讲N节点指向
+    //现在将N节点指向
     if (temp) {
         temp ->next = preM;
     }else {
@@ -488,12 +489,11 @@ struct Node *reverseSpecialPosition(struct Node *head,int m,int n) {
 }
 
 
+
 // leetcode 237 问题
+// 代码已经提交leetcode
 // Delete Node in a Linked List，删除链表中的节点
 void deleteNode (struct Node *node) {
-    if (node == NULL) {
-//        return node;
-    }
     //分成两部分
     //1.删除节点的值
     //2.改变节点的next指针
@@ -524,6 +524,8 @@ bool checkListNodeIsPalinrome(struct Node *node) {
 }
 
 //找到链表的中间节点
+//已经提交leetcode
+//快慢指针、当快指针指向尾节点的时候，慢指针刚好指向中间节点
 struct Node * findMiddleOfLinkList(struct Node *node) {
     if (node == NULL) {
         return  NULL;
@@ -557,20 +559,129 @@ struct Node * reverseLinkListNode(struct Node *node) {
 }
 
 // leetcode 19 给定n，从链表尾节点开始删除第n个节点
-//struct Node *deleteNthListNode (struct Node *node,int n) {
-//    if (node == NULL) {
-//        return node;
-//    }
-//
-//}
-//思路
+//思路1 leetcode 提交成功
 //1.找到链表长度t
 //2.遍历t-n之前的节点
 //3.删除第t-n节点的next节点
+struct Node *deleteNthListNode2 (struct Node *head,int n) {
+    if (head == NULL) {
+        return head;
+    }
+    int count = 1;
+    struct Node *temp = head;
+    while (temp ->next != NULL) {
+        temp = temp ->next;
+        count ++;
+    }
+    if (n >= count) {
+        return head ->next;
+    }
+    temp = head;
+    for (int i = 0; i< count -n -1; i++) {
+        temp = temp ->next;
+    }
+    temp ->next = temp ->next ->next;
+    return head;
+}
 
 
 
+//思路2 leetcode 提交成功
+//快慢指针
+//快指针先跑N步，如果快指针为NULLz，则直接返回head ->next
+//然后将快慢指针一起开始跑，一直跑到快指针指向空
+//
+struct Node *deleteNthListNode (struct Node *head,int n) {
+    if (head == NULL) {
+        return head;
+    }
+    struct Node *fast = head;
+    struct Node *slow = head;
+    for (int i = 0; i<n ; i++) {
+        fast = fast ->next;
+        if (fast == NULL) {
+            return head ->next;
+        }
+    }
+    while (fast ->next != NULL) {
+        fast = fast ->next;
+        slow = slow ->next;
+    }
+    slow ->next = slow ->next ->next;
+    return head;
+}
 
+
+//leetcode 61 roate list
+//思路
+//1.找出链表的长度以及尾指针
+//2.将链表变成环
+//3.找出打破环的节点
+//4.将打破环的节点的next 指向NULL
+struct Node * rotateRight(struct Node *head,int k) {
+    if (k ==0 || head == NULL) {
+        return head;
+    }
+    int count = 1;
+    struct Node *temp = head;
+    //找出链表长度以及链表的尾指针
+    while (temp ->next != NULL) {
+        temp = temp ->next;
+        count ++;
+    }
+    //将链表尾指针指向头指针，这样链表就是环
+    temp ->next = head;
+    
+    k = count - k % count;
+    for (int i = 0; i< k; i++) {
+        temp = temp ->next;
+    }
+    head = temp ->next;
+    temp ->next = NULL;
+    return head;
+}
+
+
+//leetcode sortList O(NlgN);
+//要求平均算法时间复杂度是 O(NlgN);
+//能使用的排序算法快排、堆排序、归并排序
+//递归的思想 leetcode一直提交不成功
+struct Node *mergeTwoList(struct Node *l1,struct Node *l2) {
+    if (l1 == NULL) {
+        return l2;
+    }
+    if (l2 == NULL) {
+        return l1;
+    }
+    struct Node *result = NULL;
+    if (l1-> data <= l2 ->data) {
+        result = l1;
+        result ->next = mergeTwoList(l1->next, l2);
+    }else {
+        result = l2;
+        result ->next = mergeTwoList(l1, l2->next);
+    }
+    return result;
+}
+
+struct Node *sortList(struct Node *head) {
+    if (head == NULL) {
+        return head;
+    }
+    struct Node *fast = head;
+    struct Node *slow = head;
+    struct Node *pre = NULL;
+    //切成两个链表
+    while (fast != NULL && fast ->next != NULL) {
+        pre = slow;
+        fast = fast ->next ->next;
+        slow = slow ->next;
+    }
+    pre ->next = NULL;
+    struct Node *l1 = sortList(head);
+    struct Node *l2 = sortList(slow);
+    return mergeTwoList(l1, l2);
+}
 
 
 
