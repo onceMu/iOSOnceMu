@@ -188,6 +188,26 @@ void bubbleSortedss(int arr[],int n ) {
 
 //void quickSort(int arr[],)
 
+//binary serach
+//时间复杂度O(lgn)
+int BinarySearch(int *a ,int n,int key) {
+    int low,high,middle;
+    low = 1;
+    high = n;
+    while (low <= high) {
+        //找到中间节点
+        middle = (low + high)/2;
+        //如果中间结点比key大，
+        if (key < a[middle]) {
+            high = middle - 1;
+        }else if (key > a[middle]) {
+            high = middle +1;
+        }else {
+            return middle;
+        }
+    }
+    return 0;
+}
 
 
 
