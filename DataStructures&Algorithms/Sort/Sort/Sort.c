@@ -20,7 +20,13 @@ void swap (int *xp, int *yp) {
 void selectionSort(int arr[],int n ) {
     int i,j,min_idx;
     for (i = 0; i< n-1; i++) {
+        //从第一个元素开始
         min_idx = i;
+        //循环开始
+        //第一次循环：以第一个元素为基准元素，游标为0，顺序遍历数组后面的值，如果后面的值比游标对应的值小，则将游标对应的indext交换成当前元素对应的值，直到循环到最后一个元素
+        //第一次循环完成之后，交换第一个值和 游标对应的值
+        //第二次循环，以第二个值为基准元素，游标为1m，顺序遍历数组后面的值，直到最后一个，然后将游标交换到正确的位置，然后交换基准元素和游标对应的元素
+        //第n次循环
         for (j = i +1; j <n; j ++) {
             if (arr[j] < arr[min_idx]) {
                 min_idx = j;
@@ -33,10 +39,15 @@ void selectionSort(int arr[],int n ) {
 //插入排序 不会访问索引右边，将每次需要插入的数据，插入到索引左边合适的位置
 void insertSort(int arr[],int n) {
     int i,j,key;
+    //插入排序的思想，是将元素顺序插入到对应的位置
+    //默认第0个元素是有序的
+    //循环从1开始，然后判断第2个和第1个的大小
+    //第一次循环，判断第2个元素和已有序数组中第1个值的大小，然后合适的交换位置
+    //第二次循环，判断未排序数组第3个元素在已排序数组的合适位置，如果已排序数组的值大于当前的值，则交换到合适位置
     for (i = 1; i < n; i++) {
         key = arr[i];
         j = i - 1;
-        while (j > 0 && arr[j] > key) {
+        while (j >= 0 && arr[j] > key) {
             arr[j+1] = arr[j];
             j = j-1;
         }
@@ -208,6 +219,94 @@ int BinarySearch(int *a ,int n,int key) {
     }
     return 0;
 }
+
+
+//递归
+//1.一个问题的解可以分解为几个子问题的解
+//2.问题与拆解之后的子问题，除了数据规模不同，求解思路一致
+//3.存在递归终止条件
+
+//排序
+//最好情况、最坏情况、平均时间复杂度
+//时间复杂度系数、常数、低阶
+//比较次数和移动次数
+//稳定性
+
+//冒泡排序是一个稳定的排序、时间复杂度O（n2），空间复杂度O(1),只需要交换就可以
+void bulleSort (int arr[],int n) {
+    if (n <= 1) {
+        return;
+    }
+    for (int i = 0; i<n ; i++) {
+        for (int j = 1; i< n-j-1; j++) {
+            if (arr[j] < arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+//插入排序
+//默认第一个是已经处于正确位置的，要做的是将后面的数据跟有序数组最后一个比较，插入到合适的位置
+//时间复杂度O(n2)
+void insertSSort(int arr[],int n) {
+    if (n <= 1) {
+        return;
+    }
+    for (int i =1; i<n; i++) {
+        int value = arr[i];
+        int j = i -1;
+        for (; j>=0; j--) {
+            if (arr[j] > value) {
+                arr[j+1] = arr[j];
+            }else {
+                break;
+            }
+        }
+        arr[j+1] = value;
+    }
+}
+
+
+//插入排序的思想就是从将待排序数组中的第一个元素插入到已排序数组中的合适位置
+void insertSSSSort (int arr[],int n) {
+    if (n <= 1) {
+        return;
+    }
+    for (int i = 1; i< n ; i++) {
+        int value = arr[i];
+        int j = i-1;
+        //当j == 0 的时候，并且arr[0] 大于 arr[1]
+        //将arr[1] = arr[0];
+        //j --
+        //将arr[0] = value
+        while (j>= 0 && arr[j] > value) {
+            arr[j+1] = arr[j];
+            j = j-1;
+        }
+        arr[j+1] = value;
+    }
+}
+
+//选择排序
+//选择排序的思想是将从未排序数组中找出最小元素对应的index，然后交换合适的index
+void selctedSSort(int arr[],int n) {
+    if (n <= 1) {
+        return;
+    }
+    for (int i =0; i< n; i++) {
+        int midX = i;
+        for (int j = 1; j < n - 1; j++) {
+            if (arr[j] < arr[midX]) {
+                midX = j;
+            }
+        }
+        arr[i] = arr[midX];
+    }
+}
+
 
 
 
