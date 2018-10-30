@@ -122,7 +122,7 @@ void swipTwoNumber(int *xp,int *yp) {
 void bubbleCurrentSort(int arr[],int n) {
     int i,j;
     for (i = 0; i<n; i++) {
-        for (j = 1; j< n-i-1; j++) {
+        for (j = 0; j< n-i-1; j++) {
             if (arr[j] > arr[j+1]) {
                 swipTwoNumber(&arr[j], &arr[j+1]);
             }
@@ -308,7 +308,22 @@ void selctedSSort(int arr[],int n) {
 }
 
 
-
+//冒泡排序
+//每一趟冒泡，会将对应的值放在合适的位置
+void bubbleSorrrt (int arr[],int n) {
+    if (n <= 1) {
+        return;
+    }
+    for (int i = 0; i< n; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int value = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = value;
+            }
+        }
+    }
+}
 
 
 
