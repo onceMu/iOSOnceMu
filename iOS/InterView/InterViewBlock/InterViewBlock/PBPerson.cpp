@@ -106,6 +106,16 @@ struct __AtAutoreleasePool {
 };
 
 #define __OFFSETOFIVAR__(TYPE, MEMBER) ((long long) &((TYPE *)0)->MEMBER)
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_97_bz_j89nj3lz1tj200mlnb8f80000gn_T_PBPerson_90e0b3_mi_0 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"\342\200\246%p >>>>>>>>",14};
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_97_bz_j89nj3lz1tj200mlnb8f80000gn_T_PBPerson_90e0b3_mi_1 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"I love you",10};
+
+
+
+
+
+
+
+
 
 
 
@@ -32634,14 +32644,19 @@ struct NSUUID_IMPL {
 
 #pragma clang assume_nonnull end
 
+
+
+
 #ifndef _REWRITER_typedef_PBPerson
 #define _REWRITER_typedef_PBPerson
 typedef struct objc_object PBPerson;
 typedef struct {} _objc_exc_PBPerson;
 #endif
 
+extern "C" unsigned long OBJC_IVAR_$_PBPerson$_name;
 struct PBPerson_IMPL {
 	struct NSObject_IMPL NSObject_IVARS;
+	NSString *_name;
 };
 
 
@@ -32652,11 +32667,213 @@ struct PBPerson_IMPL {
 /* @end */
 
 
-int main(int argc, const char * argv[]) {
-    /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
-        PBPerson *person = ((PBPerson *(*)(id, SEL))(void *)objc_msgSend)((id)((PBPerson *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("PBPerson"), sel_registerName("alloc")), sel_registerName("init"));
-        ((void (*)(id, SEL))(void *)objc_msgSend)((id)person, sel_registerName("test"));
+// @implementation PBPerson
+
+
+struct __PBPerson__test_block_impl_0 {
+  struct __block_impl impl;
+  struct __PBPerson__test_block_desc_0* Desc;
+  PBPerson *self;
+  __PBPerson__test_block_impl_0(void *fp, struct __PBPerson__test_block_desc_0 *desc, PBPerson *_self, int flags=0) : self(_self) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __PBPerson__test_block_func_0(struct __PBPerson__test_block_impl_0 *__cself) {
+  PBPerson *self = __cself->self; // bound by copy
+
+        NSLog((NSString *)&__NSConstantStringImpl__var_folders_97_bz_j89nj3lz1tj200mlnb8f80000gn_T_PBPerson_90e0b3_mi_0,(*(NSString **)((char *)self + OBJC_IVAR_$_PBPerson$_name)));
     }
-    return 0;
+static void __PBPerson__test_block_copy_0(struct __PBPerson__test_block_impl_0*dst, struct __PBPerson__test_block_impl_0*src) {_Block_object_assign((void*)&dst->self, (void*)src->self, 3/*BLOCK_FIELD_IS_OBJECT*/);}
+
+static void __PBPerson__test_block_dispose_0(struct __PBPerson__test_block_impl_0*src) {_Block_object_dispose((void*)src->self, 3/*BLOCK_FIELD_IS_OBJECT*/);}
+
+static struct __PBPerson__test_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+  void (*copy)(struct __PBPerson__test_block_impl_0*, struct __PBPerson__test_block_impl_0*);
+  void (*dispose)(struct __PBPerson__test_block_impl_0*);
+} __PBPerson__test_block_desc_0_DATA = { 0, sizeof(struct __PBPerson__test_block_impl_0), __PBPerson__test_block_copy_0, __PBPerson__test_block_dispose_0};
+
+static void _I_PBPerson_test(PBPerson * self, SEL _cmd) {
+    void (*block)(void) = ((void (*)())&__PBPerson__test_block_impl_0((void *)__PBPerson__test_block_func_0, &__PBPerson__test_block_desc_0_DATA, self, 570425344));
+    ((void (*)(__block_impl *))((__block_impl *)block)->FuncPtr)((__block_impl *)block);
 }
+
+
+static instancetype _I_PBPerson_init(PBPerson * self, SEL _cmd) {
+    self = ((PBPerson *(*)(__rw_objc_super *, SEL))(void *)objc_msgSendSuper)((__rw_objc_super){(id)self, (id)class_getSuperclass(objc_getClass("PBPerson"))}, sel_registerName("init"));
+    if (self) {
+        (*(NSString **)((char *)self + OBJC_IVAR_$_PBPerson$_name)) = (NSString *)&__NSConstantStringImpl__var_folders_97_bz_j89nj3lz1tj200mlnb8f80000gn_T_PBPerson_90e0b3_mi_1;
+    }
+    return self;
+}
+
+
+static NSString * _I_PBPerson_name(PBPerson * self, SEL _cmd) { return (*(NSString **)((char *)self + OBJC_IVAR_$_PBPerson$_name)); }
+extern "C" __declspec(dllimport) void objc_setProperty (id, SEL, long, id, bool, bool);
+
+static void _I_PBPerson_setName_(PBPerson * self, SEL _cmd, NSString *name) { objc_setProperty (self, _cmd, __OFFSETOFIVAR__(struct PBPerson, _name), (id)name, 0, 1); }
+// @end
+
+struct _prop_t {
+	const char *name;
+	const char *attributes;
+};
+
+struct _protocol_t;
+
+struct _objc_method {
+	struct objc_selector * _cmd;
+	const char *method_type;
+	void  *_imp;
+};
+
+struct _protocol_t {
+	void * isa;  // NULL
+	const char *protocol_name;
+	const struct _protocol_list_t * protocol_list; // super protocols
+	const struct method_list_t *instance_methods;
+	const struct method_list_t *class_methods;
+	const struct method_list_t *optionalInstanceMethods;
+	const struct method_list_t *optionalClassMethods;
+	const struct _prop_list_t * properties;
+	const unsigned int size;  // sizeof(struct _protocol_t)
+	const unsigned int flags;  // = 0
+	const char ** extendedMethodTypes;
+};
+
+struct _ivar_t {
+	unsigned long int *offset;  // pointer to ivar offset location
+	const char *name;
+	const char *type;
+	unsigned int alignment;
+	unsigned int  size;
+};
+
+struct _class_ro_t {
+	unsigned int flags;
+	unsigned int instanceStart;
+	unsigned int instanceSize;
+	const unsigned char *ivarLayout;
+	const char *name;
+	const struct _method_list_t *baseMethods;
+	const struct _objc_protocol_list *baseProtocols;
+	const struct _ivar_list_t *ivars;
+	const unsigned char *weakIvarLayout;
+	const struct _prop_list_t *properties;
+};
+
+struct _class_t {
+	struct _class_t *isa;
+	struct _class_t *superclass;
+	void *cache;
+	void *vtable;
+	struct _class_ro_t *ro;
+};
+
+struct _category_t {
+	const char *name;
+	struct _class_t *cls;
+	const struct _method_list_t *instance_methods;
+	const struct _method_list_t *class_methods;
+	const struct _protocol_list_t *protocols;
+	const struct _prop_list_t *properties;
+};
+extern "C" __declspec(dllimport) struct objc_cache _objc_empty_cache;
+#pragma warning(disable:4273)
+
+extern "C" unsigned long int OBJC_IVAR_$_PBPerson$_name __attribute__ ((used, section ("__DATA,__objc_ivar"))) = __OFFSETOFIVAR__(struct PBPerson, _name);
+
+static struct /*_ivar_list_t*/ {
+	unsigned int entsize;  // sizeof(struct _prop_t)
+	unsigned int count;
+	struct _ivar_t ivar_list[1];
+} _OBJC_$_INSTANCE_VARIABLES_PBPerson __attribute__ ((used, section ("__DATA,__objc_const"))) = {
+	sizeof(_ivar_t),
+	1,
+	{{(unsigned long int *)&OBJC_IVAR_$_PBPerson$_name, "_name", "@\"NSString\"", 3, 8}}
+};
+
+static struct /*_method_list_t*/ {
+	unsigned int entsize;  // sizeof(struct _objc_method)
+	unsigned int method_count;
+	struct _objc_method method_list[4];
+} _OBJC_$_INSTANCE_METHODS_PBPerson __attribute__ ((used, section ("__DATA,__objc_const"))) = {
+	sizeof(_objc_method),
+	4,
+	{{(struct objc_selector *)"test", "v16@0:8", (void *)_I_PBPerson_test},
+	{(struct objc_selector *)"init", "@16@0:8", (void *)_I_PBPerson_init},
+	{(struct objc_selector *)"name", "@16@0:8", (void *)_I_PBPerson_name},
+	{(struct objc_selector *)"setName:", "v24@0:8@16", (void *)_I_PBPerson_setName_}}
+};
+
+static struct /*_prop_list_t*/ {
+	unsigned int entsize;  // sizeof(struct _prop_t)
+	unsigned int count_of_properties;
+	struct _prop_t prop_list[1];
+} _OBJC_$_PROP_LIST_PBPerson __attribute__ ((used, section ("__DATA,__objc_const"))) = {
+	sizeof(_prop_t),
+	1,
+	{{"name","T@\"NSString\",C,N,V_name"}}
+};
+
+static struct _class_ro_t _OBJC_METACLASS_RO_$_PBPerson __attribute__ ((used, section ("__DATA,__objc_const"))) = {
+	1, sizeof(struct _class_t), sizeof(struct _class_t), 
+	0, 
+	"PBPerson",
+	0, 
+	0, 
+	0, 
+	0, 
+	0, 
+};
+
+static struct _class_ro_t _OBJC_CLASS_RO_$_PBPerson __attribute__ ((used, section ("__DATA,__objc_const"))) = {
+	0, __OFFSETOFIVAR__(struct PBPerson, _name), sizeof(struct PBPerson_IMPL), 
+	0, 
+	"PBPerson",
+	(const struct _method_list_t *)&_OBJC_$_INSTANCE_METHODS_PBPerson,
+	0, 
+	(const struct _ivar_list_t *)&_OBJC_$_INSTANCE_VARIABLES_PBPerson,
+	0, 
+	(const struct _prop_list_t *)&_OBJC_$_PROP_LIST_PBPerson,
+};
+
+extern "C" __declspec(dllimport) struct _class_t OBJC_METACLASS_$_NSObject;
+
+extern "C" __declspec(dllexport) struct _class_t OBJC_METACLASS_$_PBPerson __attribute__ ((used, section ("__DATA,__objc_data"))) = {
+	0, // &OBJC_METACLASS_$_NSObject,
+	0, // &OBJC_METACLASS_$_NSObject,
+	0, // (void *)&_objc_empty_cache,
+	0, // unused, was (void *)&_objc_empty_vtable,
+	&_OBJC_METACLASS_RO_$_PBPerson,
+};
+
+extern "C" __declspec(dllimport) struct _class_t OBJC_CLASS_$_NSObject;
+
+extern "C" __declspec(dllexport) struct _class_t OBJC_CLASS_$_PBPerson __attribute__ ((used, section ("__DATA,__objc_data"))) = {
+	0, // &OBJC_METACLASS_$_PBPerson,
+	0, // &OBJC_CLASS_$_NSObject,
+	0, // (void *)&_objc_empty_cache,
+	0, // unused, was (void *)&_objc_empty_vtable,
+	&_OBJC_CLASS_RO_$_PBPerson,
+};
+static void OBJC_CLASS_SETUP_$_PBPerson(void ) {
+	OBJC_METACLASS_$_PBPerson.isa = &OBJC_METACLASS_$_NSObject;
+	OBJC_METACLASS_$_PBPerson.superclass = &OBJC_METACLASS_$_NSObject;
+	OBJC_METACLASS_$_PBPerson.cache = &_objc_empty_cache;
+	OBJC_CLASS_$_PBPerson.isa = &OBJC_METACLASS_$_PBPerson;
+	OBJC_CLASS_$_PBPerson.superclass = &OBJC_CLASS_$_NSObject;
+	OBJC_CLASS_$_PBPerson.cache = &_objc_empty_cache;
+}
+#pragma section(".objc_inithooks$B", long, read, write)
+__declspec(allocate(".objc_inithooks$B")) static void *OBJC_CLASS_SETUP[] = {
+	(void *)&OBJC_CLASS_SETUP_$_PBPerson,
+};
+static struct _class_t *L_OBJC_LABEL_CLASS_$ [1] __attribute__((used, section ("__DATA, __objc_classlist,regular,no_dead_strip")))= {
+	&OBJC_CLASS_$_PBPerson,
+};
 static struct IMAGE_INFO { unsigned version; unsigned flag; } _OBJC_IMAGE_INFO = { 0, 2 };
