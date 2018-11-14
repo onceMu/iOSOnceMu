@@ -20,6 +20,7 @@
 		8B90186921017FFD00F0024E /* LinkListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90186821017FFD00F0024E /* LinkListNode.swift */; };
 		8B91DA6B2186D2EB00BAD250 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B91DA6A2186D2EB00BAD250 /* Tree.m */; };
 		8BDA60D2216F2CA10018624C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA60D1216F2CA10018624C /* TestViewController.m */; };
+		FBB9529E2189FB86000A6E35 /* ArraySort.c in Sources */ = {isa = PBXBuildFile; fileRef = FBB9529D2189FB86000A6E35 /* ArraySort.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		8B91DA6A2186D2EB00BAD250 /* Tree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tree.m; sourceTree = "<group>"; };
 		8BDA60D0216F2CA10018624C /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		8BDA60D1216F2CA10018624C /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		FBB9529C2189FB86000A6E35 /* ArraySort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArraySort.h; sourceTree = "<group>"; };
+		FBB9529D2189FB86000A6E35 /* ArraySort.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ArraySort.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				8B72576F20F5E152003903AB /* StringInterview.c */,
 				8B91DA692186D2EB00BAD250 /* Tree.h */,
 				8B91DA6A2186D2EB00BAD250 /* Tree.m */,
+				FBB9529C2189FB86000A6E35 /* ArraySort.h */,
+				FBB9529D2189FB86000A6E35 /* ArraySort.c */,
 				8B72577120F5F0B0003903AB /* LinkList.h */,
 				8B72573F20F5B416003903AB /* Main.storyboard */,
 				8B72574220F5B418003903AB /* Assets.xcassets */,
@@ -293,6 +298,7 @@
 				8B72573E20F5B416003903AB /* ViewController.m in Sources */,
 				8B91DA6B2186D2EB00BAD250 /* Tree.m in Sources */,
 				8B90186921017FFD00F0024E /* LinkListNode.swift in Sources */,
+				FBB9529E2189FB86000A6E35 /* ArraySort.c in Sources */,
 				8BDA60D2216F2CA10018624C /* TestViewController.m in Sources */,
 				8B72574920F5B418003903AB /* main.m in Sources */,
 				8B72573B20F5B416003903AB /* AppDelegate.m in Sources */,
