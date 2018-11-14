@@ -40,6 +40,18 @@ void printString(NSString *a) {
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
+    
+    int x = 10;
+//    x ++;
+//    先加x的值，然后将x的值再加1
+//    11 10
+//    ++x 先将x加1，再加值
+//    12
+
+    int d = (x++) + (++x) + (x++);
+    //10 + 12 + 12
+    //
+    
 //    NSString *text = @"sssssss";
 //    text = [text stringByReplacingOccurrencesOfString:@"\\n" withString:@"/n"];
 //    NSLog(@"%@",text);
