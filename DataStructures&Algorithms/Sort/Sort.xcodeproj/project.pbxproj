@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B6359BC219D7ED500077C63 /* AutoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6359BB219D7ED500077C63 /* AutoDictionary.m */; };
 		8B72573B20F5B416003903AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72573A20F5B416003903AB /* AppDelegate.m */; };
 		8B72573E20F5B416003903AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72573D20F5B416003903AB /* ViewController.m */; };
 		8B72574120F5B416003903AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B72573F20F5B416003903AB /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B6359BA219D7ED500077C63 /* AutoDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoDictionary.h; sourceTree = "<group>"; };
+		8B6359BB219D7ED500077C63 /* AutoDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoDictionary.m; sourceTree = "<group>"; };
 		8B72573620F5B416003903AB /* Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B72573920F5B416003903AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B72573A20F5B416003903AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				8B72573D20F5B416003903AB /* ViewController.m */,
 				8BDA60D0216F2CA10018624C /* TestViewController.h */,
 				8BDA60D1216F2CA10018624C /* TestViewController.m */,
+				8B6359BA219D7ED500077C63 /* AutoDictionary.h */,
+				8B6359BB219D7ED500077C63 /* AutoDictionary.m */,
 				8B90186821017FFD00F0024E /* LinkListNode.swift */,
 				8B72576B20F5B426003903AB /* Sort.h */,
 				8B72576C20F5B426003903AB /* Sort.c */,
@@ -297,6 +302,7 @@
 				8B72574920F5B418003903AB /* main.m in Sources */,
 				8B72573B20F5B416003903AB /* AppDelegate.m in Sources */,
 				8B72577020F5E152003903AB /* StringInterview.c in Sources */,
+				8B6359BC219D7ED500077C63 /* AutoDictionary.m in Sources */,
 				8B72576D20F5B426003903AB /* Sort.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

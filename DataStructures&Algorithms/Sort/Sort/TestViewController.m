@@ -7,19 +7,29 @@
 //
 
 #import "TestViewController.h"
+#import "AutoDictionary.h"
 
 @interface TestViewController ()
 
 @property (nonatomic, strong) NSTimer *timer;
 
+
 @end
 
 @implementation TestViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    AutoDictionary *dict = [AutoDictionary new];
+    dict.date = [NSDate dateWithTimeIntervalSince1970:475372800];
+    dict.string = @"hahahhah";
+    NSLog(@"%@",dict.string);
+    NSLog(@"%@",dict.date);
     
 //    NSArray *data = [NSArray array];
 //    [data retain];
