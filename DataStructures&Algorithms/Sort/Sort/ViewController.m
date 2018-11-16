@@ -10,7 +10,7 @@
 #import "LinkList.h"
 #import "LinkListNode.swift"
 #import "TestViewController.h"
-
+#import "PBPerson.h"
 
 @interface ViewController ()
 
@@ -29,6 +29,8 @@ void printString(NSString *a) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    PBPerson *person = [[PBPerson alloc]initWithFirstName:@"a" lastName:@"b"];
+
     
     
     self.view.backgroundColor = [UIColor whiteColor];

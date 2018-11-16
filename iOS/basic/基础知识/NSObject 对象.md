@@ -54,6 +54,10 @@ void objc_msgSend(id self, SEL cmd,...)
 
 
 
+sudo xcrun --sdk iphoneos assetutil --info Assets.car > Assets.json
+
+查看assets文件中图片的伽马值
+
 
 
 

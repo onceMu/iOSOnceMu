@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B6359BC219D7ED500077C63 /* AutoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6359BB219D7ED500077C63 /* AutoDictionary.m */; };
+		8B635A33219EBE7900077C63 /* PBPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B635A32219EBE7900077C63 /* PBPerson.m */; };
 		8B72573B20F5B416003903AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72573A20F5B416003903AB /* AppDelegate.m */; };
 		8B72573E20F5B416003903AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B72573D20F5B416003903AB /* ViewController.m */; };
 		8B72574120F5B416003903AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B72573F20F5B416003903AB /* Main.storyboard */; };
@@ -44,6 +45,8 @@
 /* Begin PBXFileReference section */
 		8B6359BA219D7ED500077C63 /* AutoDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoDictionary.h; sourceTree = "<group>"; };
 		8B6359BB219D7ED500077C63 /* AutoDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoDictionary.m; sourceTree = "<group>"; };
+		8B635A31219EBE7900077C63 /* PBPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBPerson.h; sourceTree = "<group>"; };
+		8B635A32219EBE7900077C63 /* PBPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PBPerson.m; sourceTree = "<group>"; };
 		8B72573620F5B416003903AB /* Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B72573920F5B416003903AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8B72573A20F5B416003903AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -140,6 +143,8 @@
 				8B91DA6A2186D2EB00BAD250 /* Tree.m */,
 				FBB9529C2189FB86000A6E35 /* ArraySort.h */,
 				FBB9529D2189FB86000A6E35 /* ArraySort.c */,
+				8B635A31219EBE7900077C63 /* PBPerson.h */,
+				8B635A32219EBE7900077C63 /* PBPerson.m */,
 				8B72577120F5F0B0003903AB /* LinkList.h */,
 				8B72573F20F5B416003903AB /* Main.storyboard */,
 				8B72574220F5B418003903AB /* Assets.xcassets */,
@@ -303,6 +308,7 @@
 				8B72573E20F5B416003903AB /* ViewController.m in Sources */,
 				8B91DA6B2186D2EB00BAD250 /* Tree.m in Sources */,
 				8B90186921017FFD00F0024E /* LinkListNode.swift in Sources */,
+				8B635A33219EBE7900077C63 /* PBPerson.m in Sources */,
 				FBB9529E2189FB86000A6E35 /* ArraySort.c in Sources */,
 				8BDA60D2216F2CA10018624C /* TestViewController.m in Sources */,
 				8B72574920F5B418003903AB /* main.m in Sources */,
