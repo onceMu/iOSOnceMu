@@ -62,7 +62,13 @@ sudo xcrun --sdk iphoneos assetutil --info Assets.car > Assets.json
 
 
 
+Instance method 
 
+  -(void)foo
+
+Class method
+
+ +(void)foo
 
 
 

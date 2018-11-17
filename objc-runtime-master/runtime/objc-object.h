@@ -176,7 +176,12 @@ objc_object::initIsa(Class cls)
     initIsa(cls, false, false);
 }
 
-inline void 
+    // ::作用域，运算符中等级最高的。
+    // 1.全局作用域global scope (用法 ::name)
+    // 2.类作用域class scope (用法class::name)
+    // 3.命名空间作用域namespace scope(用法 namespace::name)
+inline void
+//属于类作用域
 objc_object::initClassIsa(Class cls)
 {
     if (DisableNonpointerIsa  ||  cls->instancesRequireRawIsa()) {
@@ -201,9 +206,12 @@ objc_object::initInstanceIsa(Class cls, bool hasCxxDtor)
     initIsa(cls, true, hasCxxDtor);
 }
 
+    
+//初始化Isa的时候，nonpointer 默认是 true
 inline void 
 objc_object::initIsa(Class cls, bool nonpointer, bool hasCxxDtor) 
-{ 
+{
+
     assert(!isTaggedPointer()); 
     
     if (!nonpointer) {

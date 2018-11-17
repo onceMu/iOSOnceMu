@@ -205,10 +205,11 @@ struct entsize_list_tt {
 
 
 struct method_t {
-    SEL name;
-    const char *types;
-    IMP imp;
+    SEL name; //名称
+    const char *types; //类型
+    IMP imp;//IMP 函数指针
 
+    //通过SEL 内存地址进行排序
     struct SortBySELAddress :
         public std::binary_function<const method_t&,
                                     const method_t&, bool>
@@ -536,12 +537,12 @@ struct class_ro_t {
     const uint8_t * ivarLayout;
     
     const char * name;
-    method_list_t * baseMethodList;
-    protocol_list_t * baseProtocols;
-    const ivar_list_t * ivars;
+    method_list_t * baseMethodList; //基础方法列表
+    protocol_list_t * baseProtocols; //基础协议列表
+    const ivar_list_t * ivars; //ivar 列表
 
     const uint8_t * weakIvarLayout;
-    property_list_t *baseProperties;
+    property_list_t *baseProperties; //基础属性列表
 
     method_list_t *baseMethods() const {
         return baseMethodList;
@@ -805,9 +806,9 @@ struct class_rw_t {
 
     const class_ro_t *ro;
 
-    method_array_t methods;
-    property_array_t properties;
-    protocol_array_t protocols;
+    method_array_t methods; //方法列表
+    property_array_t properties; //熟悉列表
+    protocol_array_t protocols;  //协议列表
 
     Class firstSubclass;
     Class nextSiblingClass;
