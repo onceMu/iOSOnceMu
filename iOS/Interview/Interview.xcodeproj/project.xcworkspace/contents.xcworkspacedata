@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Interview.xcodeproj">
+      location = "group:/Users/le/Documents/workspace/iOSLearn/iOS/Interview/Interview/main.cpp">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
