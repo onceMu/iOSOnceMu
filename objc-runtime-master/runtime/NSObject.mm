@@ -2421,6 +2421,59 @@ void arr_init(void)
     return [(id)self mutableCopyWithZone:nil];
 }
 
+
+/*
+ runtime 在arc 中的支持
+1.id objc_autorelease (id value)
+前提条件： value 为null或者指向有效对象的指针
+ 当value为null的时候，调用无效，否则函数会将对象添加到最里面的自动释放池，就像对象已经发送autorelease消息一样
+ 函数永远返回 value
+
+2.void objc_autoreleasePoolPop(void *pool)
+前提条件：pool 是当前线程在之前时候调动objc_autoreleasePoolPush的结果，pool必须存在并且没有被poped掉
+
+这个方法会释放所有已经被加载到当前autorelease pool中的对象以及包含的任何自动释放池，然后将当前自动释放池设置为关闭的池。
+
+
+ 3. void *objc_autoreleasePoolPush(void)
+ 创建一个由当前自动释放池包含的新的自动释放池，并且将新创建的池子变成当前池，并返回一个不透明的handle。
+ 4. id objc_autoreleaseReturnValue(id value);
+前提条件：value为null或者指向有效对象的指针
+如果value是空，则调用无效，否则，会尽最大努力将对象的保留计数的所有权移交给对封闭调用帧中的同一对象的objc_retainAutoreleasedReturnValue 调用，如果不能实现，则会自动释放对象。
+ 永远返回value
+ 5.void objc_copyWeak(id *dest, id *src)
+ 前提条件：src是一个有效的指针，要么包含一个空指针，要么已经被注册成了一个__weak对象。dest 是一个还没有被注册成__weak对象的指针
+ dest会被初始化为等效的srck，可能会将其注册到运行时
+ objc_copyWeak(id *dest, id *src) {
+    objc_release()objc_initWeak(dest,objc_loadWeakRetained(src)));
+ }
+ 在src上调用objc_storeWeak的时候必须是原子状态，线程安全
+
+ 6.void objc_destroyWeak(id *object);
+ 前提条件：object是有个有效的指针，包含一个空指针或者已经被注册成__weak的对象
+ object如果是曾经未被注册的弱对象，当前值object未指定m，否则就相当于调用下面代码
+ void objc_destroyWeak(id *object) {
+   objc_storeWeak(object, nil);
+ }
+ 调用objc_storeWeak的时候是不需要原子操作的。
+
+ 7.id objc_initWeak(id *object, id value);
+ object是一个尚未被注册成__weak对象的有效指针，value 为null或者指向有效对象的指针。
+ 如果value是空指针或者它指向的对象已经dealloc，object会进行零初始化，否则object被c注册为__weak指向的对象value
+ id objc_initWeak(id *object, id value) {
+    *object = nil;
+    return objc_storeWeak(object, value);
+ }
+调用objc_storeWeak的时候是不需要原子操作的。
+
+ 8.id objc_loadWeak(id *object);
+ object是一个有效的指针，它包含一个空指针或已被注册为一个__weak对象。
+ 如果object注册为__weak对象，并且存储的最后一个值object尚未被释放或开始释放，则保留并自动释放该值并将其返回。否则返回null。相当于以下代码：
+ id objc_loadWeak(id *object) {
+    return objc_autorelease(objc_loadWeakRetained(object));
+ }
+ */
+
 @end
 
 
