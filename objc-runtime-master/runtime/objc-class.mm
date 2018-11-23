@@ -190,6 +190,7 @@ OBJC_EXPORT id	(*_zoneCopy)(id, size_t, void *);
 **********************************************************************/
 Class object_getClass(id obj)
 {
+    //如果存在，就调用obj的getIsa()方法
     if (obj) return obj->getIsa();
     else return Nil;
 }

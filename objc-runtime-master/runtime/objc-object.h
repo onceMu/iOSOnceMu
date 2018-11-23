@@ -76,6 +76,8 @@ objc_object::isClass()
 inline Class 
 objc_object::getIsa() 
 {
+    
+    //如果不是标记指针
     if (!isTaggedPointer()) return ISA();
 
     uintptr_t ptr = (uintptr_t)this;

@@ -33,14 +33,14 @@
 /// Specifies the superclass of an instance. 
 struct objc_super {
     /// Specifies an instance of a class.
-    __unsafe_unretained _Nonnull id receiver;
+    __unsafe_unretained _Nonnull id receiver; //接收者 __unsafe_unretained 类型
 
     /// Specifies the particular superclass of the instance to message. 
 #if !defined(__cplusplus)  &&  !__OBJC2__
     /* For compatibility with old objc-runtime.h header */
     __unsafe_unretained _Nonnull Class class;
 #else
-    __unsafe_unretained _Nonnull Class super_class;
+    __unsafe_unretained _Nonnull Class super_class; //super_class
 #endif
     /* super_class is the first class to search */
 };
