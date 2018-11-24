@@ -141,7 +141,7 @@ enum HaveOld { DontHaveOld = false, DoHaveOld = true };
 enum HaveNew { DontHaveNew = false, DoHaveNew = true };
 
 struct SideTable {
-    spinlock_t slock;
+    spinlock_t slock;//自旋锁，自旋锁一直忙等待，当条件不满时，会一直不断的循环判断条件是否满足，如果满足就解锁，运行之后的代码，对性能有影响，自旋锁不能递归使用，设计之初就是被设计成在不同进程或者函数之间同步
     RefcountMap refcnts;
     weak_table_t weak_table;
 
