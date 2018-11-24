@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8B0DF3842175C1660012AC2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DF3832175C1660012AC2C /* main.m */; };
+		8BC1F95D21A7F86200829183 /* Father.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F95C21A7F86200829183 /* Father.m */; };
+		8BC1F96021A7F87500829183 /* Son.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F95F21A7F87500829183 /* Son.m */; };
+		8BC1F96221A7F8DD00829183 /* Son.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F96121A7F8DD00829183 /* Son.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,11 @@
 /* Begin PBXFileReference section */
 		8B0DF3802175C1660012AC2C /* Interview */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Interview; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0DF3832175C1660012AC2C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8BC1F95B21A7F86200829183 /* Father.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Father.h; sourceTree = "<group>"; };
+		8BC1F95C21A7F86200829183 /* Father.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Father.m; sourceTree = "<group>"; };
+		8BC1F95E21A7F87500829183 /* Son.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Son.h; sourceTree = "<group>"; };
+		8BC1F95F21A7F87500829183 /* Son.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Son.m; sourceTree = "<group>"; };
+		8BC1F96121A7F8DD00829183 /* Son.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Son.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				8B0DF3832175C1660012AC2C /* main.m */,
+				8BC1F95B21A7F86200829183 /* Father.h */,
+				8BC1F95C21A7F86200829183 /* Father.m */,
+				8BC1F95E21A7F87500829183 /* Son.h */,
+				8BC1F95F21A7F87500829183 /* Son.m */,
+				8BC1F96121A7F8DD00829183 /* Son.cpp */,
 			);
 			path = Interview;
 			sourceTree = "<group>";
@@ -118,7 +131,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC1F96221A7F8DD00829183 /* Son.cpp in Sources */,
+				8BC1F96021A7F87500829183 /* Son.m in Sources */,
 				8B0DF3842175C1660012AC2C /* main.m in Sources */,
+				8BC1F95D21A7F86200829183 /* Father.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

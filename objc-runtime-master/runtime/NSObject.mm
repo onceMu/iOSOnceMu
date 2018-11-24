@@ -2033,11 +2033,14 @@ void arr_init(void)
     return self;
 }
 
+//直接返回自己
 + (Class)class {
     return self;
 }
 
+
 - (Class)class {
+    //调用objcet_getClass(self)方法
     return object_getClass(self);
 }
 
