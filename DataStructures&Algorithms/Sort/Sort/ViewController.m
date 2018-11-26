@@ -11,6 +11,7 @@
 #import "LinkListNode.swift"
 #import "TestViewController.h"
 #import "PBPerson.h"
+#import <objc/runtime.h>
 
 @interface ViewController ()
 
@@ -95,6 +96,12 @@ void printString(NSString *a) {
         }
     }
     NSLog(@"哈哈哈哈 %@",bb);
+    
+    
+    NSString *a = @"a";
+    NSString *b = [[a mutableCopy] copy];
+    
+    NSLog(@"%p %p %@",a,b,object_getClass(b));
     
     
 //    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());

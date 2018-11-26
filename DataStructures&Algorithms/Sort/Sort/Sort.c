@@ -326,5 +326,55 @@ void bubbleSorrrt (int arr[],int n) {
 }
 
 
+int binarySearch(int arr[],int num, int target) {
+    int middle = 0;
+    int left = 0;
+    int right = num - 1;
+    middle = left + (right - left)/2;//防止溢出
+// 通过右移的方式，位运算要比除法运算更加高效
+//    middle = left + ((right - left) >> 1);比如16的二进制 0001 0000 右移动一位 0000 1000
+    
+    while (left <= right) {
+        if (arr[middle] < target) {
+            left = middle + 1;
+        }else if (arr[middle] > target) {
+            right = middle - 1;
+        }else {
+            //如果是数组的第一个数字或者middle前面的值与target不相等
+            if (middle ==0 || arr[middle -1] != target) {
+                return middle;
+            }else {
+                right = middle - 1;
+            }
+        }
+    }
+    if (left > right) {
+        return -1;
+    }
+    return middle;
+}
+
+//二分查找变种
+//1.查找最后一个小于等于给定值的元素
+//2.查找第一个大于等于给定值的元素
+//3.查找最后一个值等于给定值的元素
+//4.查找第一个值等于给定值的元素
+//int privateSearchRecursive(int arr[],int num, int target) {
+//    return recursiveBinarySearch(arr, 0, num - 1, target);
+//}
+//
+//int recursiveBinarySearch(int arr[],int left, int right,int target) {
+//    if (left > right) {
+//        return -1;
+//    }
+//    int middle = left + (right - left)/2;
+//    if (arr[middle] == target) {
+//        return middle;
+//    }else if (arr[middle] > target) {
+//        recursiveBinarySearch(arr, left, middle-1, target);
+//    }else {
+//        recursiveBinarySearch(arr, middle + 1, right, target);
+//    }
+//}
 
 

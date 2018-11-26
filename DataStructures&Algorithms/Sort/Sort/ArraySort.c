@@ -65,7 +65,7 @@ int removeElement(int *nums,int numsSize,int val) {
 }
 
 //给定数组，和一个值，判断值插入数组的位置
-//[1,3,5,6],5 输出2
+//[1,3,5,6],5 输出2，O(n)算法
 int searchInsertPosition(int *nums,int numsSize,int target) {
     int position = 0;
     for (int i = 0; i<numsSize; i++) {
@@ -80,6 +80,42 @@ int searchInsertPosition(int *nums,int numsSize,int target) {
     }
     return position;
 }
+
+
+//二分查找方法
+int binarySearchPosition(int *nums,int numsSize,int target) {
+    int left = 0;
+    int right = numsSize - 1;
+    if (numsSize == 1) {
+        if(nums[0] >= target) {
+            return 0;
+        }else {
+            return 1;
+        }
+    }
+    if (nums[0] > target) {
+        return 0;
+    }
+    if (nums[numsSize - 1] < target) {
+        return numsSize;
+    }
+    while (left <= right) {
+        if (nums[left] == target) {
+            return left;
+        }else if(nums[right] == target) {
+            return right;
+        }else if (nums[left] > target && nums[left - 1] < target) {
+            return left;
+        }else if(nums[right] < target && nums[right + 1] > target) {
+            return right + 1;
+        }else {
+            right --;
+            left ++;
+        }
+    }
+    return left;
+}
+
 
 //给定一个数组，找出数组中和值最大的子序列
 //最简单的思路，两层循环遍历,顺序j把数组中每一个元素相加，记录最大值，最后返回最大值
