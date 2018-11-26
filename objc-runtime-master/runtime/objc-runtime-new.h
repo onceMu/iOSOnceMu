@@ -205,9 +205,9 @@ struct entsize_list_tt {
 
 
 struct method_t {
-    SEL name; //名称
+    SEL name; //名称函数名
     const char *types; //类型
-    IMP imp;//IMP 函数指针
+    IMP imp;//IMP 函数指针，代表函数的具体实现
 
     //通过SEL 内存地址进行排序
     struct SortBySELAddress :
@@ -807,7 +807,7 @@ struct class_rw_t {
     const class_ro_t *ro;
 
     method_array_t methods; //方法列表
-    property_array_t properties; //熟悉列表
+    property_array_t properties; //属性列表
     protocol_array_t protocols;  //协议列表
 
     Class firstSubclass;
