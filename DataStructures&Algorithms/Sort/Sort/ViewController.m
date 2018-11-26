@@ -64,6 +64,39 @@ void printString(NSString *a) {
     printString([[cs mutableCopy] copy]);
     
     
+    NSMutableArray *xx = [NSMutableArray arrayWithArray:@[@(2),@(4),@(9),@(3),@(9)]];
+    NSMutableArray *bb = [NSMutableArray arrayWithArray:@[@(2),@(4),@(9),@(3),@(9)]];
+    
+    NSInteger count = 0;
+    for (NSInteger i = xx.count - 1; i >= 0; i--) {
+        count ++;
+        if ([xx[i] integerValue] == 9) {
+            xx[i] = [NSNumber numberWithInteger:0];
+        }else {
+            NSInteger z = [xx[i] integerValue];
+            z ++ ;
+            xx[i] = [NSNumber numberWithInteger:z];
+            NSLog(@"我还在执行 %ld",count);
+        }
+    }
+    NSLog(@"哈哈哈哈 %@",xx);
+    
+    count = 0;
+    for (NSInteger i = bb.count - 1; i >= 0; i--) {
+        count ++;
+        if ([bb[i] integerValue] == 9) {
+            bb[i] = [NSNumber numberWithInteger:0];
+        }else {
+            NSInteger z = [bb[i] integerValue];
+            z ++ ;
+            bb[i] = [NSNumber numberWithInteger:z];
+            NSLog(@"我还想执行 %ld",count);
+            break;
+        }
+    }
+    NSLog(@"哈哈哈哈 %@",bb);
+    
+    
 //    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
 ////    dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, <#int64_t delta#>), <#uint64_t interval#>, <#uint64_t leeway#>)
 //
