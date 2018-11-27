@@ -21,5 +21,5 @@ int mySqrt(int x) {
             left = m + 1;
         }
     }
-    return left - 1;
+    return (int)left - 1;
 }

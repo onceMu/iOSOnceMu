@@ -242,3 +242,36 @@ void mergeTwoArray(int* nums1, int m, int* nums2, int n) {
         }
     }
 }
+
+
+//找出最合适的卖出股票机会，只能操作一次，计算最大收益
+//卖出价要大于买入价
+//如果找不到，返回0
+//时间复杂度 O(n^2)
+int maxPorfit(int * prices, int pricesSize) {
+    int max = 0;
+    int sum = 0;//默认值是是0
+    //从第二天开始遍历
+    for (int i = 0; i< pricesSize; i++) {
+        max = prices[i];
+        for (int j = i+1; j<pricesSize; j++) {
+            int income = prices[j] - max;
+            if (income > sum) {
+                sum = income;
+            }
+        }
+    }
+    return sum;
+}
+
+//彩票买卖变种，你可以多次买卖操作
+//但是需要满足先买再卖
+int maxProfit2(int * prices, int pricesSize) {
+    int sum = 0;
+    for (int i = 0; i<pricesSize -1; i++) {
+        if (pricesSize[i] < pricesSize[i+1]) {
+            sum += prices[i+1] - prices[i];
+        }
+    }
+    return sum;
+}
