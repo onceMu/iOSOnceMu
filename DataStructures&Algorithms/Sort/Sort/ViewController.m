@@ -104,6 +104,17 @@ void printString(NSString *a) {
     NSLog(@"%p %p %@",a,b,object_getClass(b));
     
     
+    NSMutableString *mutable = [NSMutableString string];
+    NSString *immutable;
+    char c = 'a';
+    do {
+        [mutable appendFormat: @"%c", c++];
+        immutable = [mutable copy];
+        NSLog(@"0x%016lx %@ %@", immutable, immutable, object_getClass(immutable));
+    } while(((uintptr_t)immutable & 1) == 1);
+    
+    
+    
 //    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
 ////    dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, <#int64_t delta#>), <#uint64_t interval#>, <#uint64_t leeway#>)
 //

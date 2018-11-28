@@ -16,9 +16,11 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
 
-        id __strong obj = [[NSObject alloc]init];
-        __weak id object = obj;
         
+        
+        id __strong array = [NSMutableArray array];
+        
+        id __weak obj = array;
     }
     return 0;
 }

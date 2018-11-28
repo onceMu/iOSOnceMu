@@ -706,8 +706,8 @@ class AutoreleasePoolPage
     magic_t const magic;
     id *next;
     pthread_t const thread;
-    AutoreleasePoolPage * const parent;
-    AutoreleasePoolPage *child;
+    AutoreleasePoolPage * const parent;//双向链表、父指针
+    AutoreleasePoolPage *child;//子指针
     uint32_t const depth;
     uint32_t hiwat;
 
@@ -836,6 +836,7 @@ class AutoreleasePoolPage
         // Not recursive: we don't want to blow out the stack 
         // if a thread accumulates a stupendous amount of garbage
         
+        //循环释放，直到释放到stop
         while (this->next != stop) {
             // Restart from hotPage() every time, in case -release 
             // autoreleased more objects
@@ -918,7 +919,7 @@ class AutoreleasePoolPage
     static AutoreleasePoolPage *pageForPointer(uintptr_t p) 
     {
         AutoreleasePoolPage *result;
-        uintptr_t offset = p % SIZE;
+        uintptr_t offset = p % SIZE; //求模、算出整除后的余数
 
         assert(offset >= sizeof(AutoreleasePoolPage));
 
@@ -992,7 +993,9 @@ class AutoreleasePoolPage
         assert(page->full()  ||  DebugPoolAllocation);
 
         do {
+            //如果page 有child 指针、就将page 指向 page ->child
             if (page->child) page = page->child;
+            //没有就重新new 一个
             else page = new AutoreleasePoolPage(page);
         } while (page->full());
 
@@ -1068,6 +1071,7 @@ public:
     }
 
 
+    //压栈
     static inline void *push() 
     {
         id *dest;
@@ -1106,11 +1110,13 @@ public:
         objc_autoreleasePoolInvalid(token);
     }
     
+    //出栈
     static inline void pop(void *token) 
     {
         AutoreleasePoolPage *page;
         id *stop;
 
+        //判断是否非空
         if (token == (void*)EMPTY_POOL_PLACEHOLDER) {
             // Popping the top-level placeholder pool.
             if (hotPage()) {
@@ -1123,7 +1129,8 @@ public:
             }
             return;
         }
-
+        
+        //通过token 找到page 地址
         page = pageForPointer(token);
         stop = (id *)token;
         if (*stop != POOL_BOUNDARY) {
@@ -2440,10 +2447,18 @@ void arr_init(void)
 
  3. void *objc_autoreleasePoolPush(void)
  创建一个由当前自动释放池包含的新的自动释放池，并且将新创建的池子变成当前池，并返回一个不透明的handle。
+ 
  4. id objc_autoreleaseReturnValue(id value);
 前提条件：value为null或者指向有效对象的指针
 如果value是空，则调用无效，否则，会尽最大努力将对象的保留计数的所有权移交给对封闭调用帧中的同一对象的objc_retainAutoreleasedReturnValue 调用，如果不能实现，则会自动释放对象。
  永远返回value
+ 主要用于最优化程序运行。用于自己持有（retain）对象的函数，持有的对象应为返回注册在autoreleasepool中对象的方法，或是函数的返回值。在调用alloc/new/copy/mutableCopy以外的方法后，由编译器插入该函数
+ objc_autoreleaseReturnValue 方法与 objc_autorelease 函数不一样，objc_autoreleaseReturnValue 会检查使用该函数的方法或者函数调用方的执行命令列表，
+ 如果在调用了 objc_autoreleaseReturnValue方法后紧接着调用了objc_retainAutoreleasedReturnValue方法，那么不将返回的对象注册到autoreleasepool中，而是直接传递到方法或函数的调用方。
+ objc_retainAutoreleasedReturnValue 与 objc_retain 函数不同，即便不注册到autoreleasepool中而返回对象，也能正确地获取对象。
+ 
+ 
+ 
  5.void objc_copyWeak(id *dest, id *src)
  前提条件：src是一个有效的指针，要么包含一个空指针，要么已经被注册成了一个__weak对象。dest 是一个还没有被注册成__weak对象的指针
  dest会被初始化为等效的srck，可能会将其注册到运行时

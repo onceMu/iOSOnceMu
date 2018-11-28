@@ -202,6 +202,7 @@ objc_object::initProtocolIsa(Class cls)
 inline void 
 objc_object::initInstanceIsa(Class cls, bool hasCxxDtor)
 {
+    //初始化实例对象的isa 指针
     assert(!cls->instancesRequireRawIsa());
     assert(hasCxxDtor == cls->hasCxxDtor());
 

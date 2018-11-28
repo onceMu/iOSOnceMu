@@ -269,9 +269,15 @@ int maxPorfit(int * prices, int pricesSize) {
 int maxProfit2(int * prices, int pricesSize) {
     int sum = 0;
     for (int i = 0; i<pricesSize -1; i++) {
-        if (pricesSize[i] < pricesSize[i+1]) {
+        if (prices[i] < prices[i+1]) {
             sum += prices[i+1] - prices[i];
         }
     }
     return sum;
 }
+
+
+//判断数组中是否有重复元素
+//思路1. 两层for 循环。时间复杂度O(n^2)
+//思路2. 先排序，然后再一次for循环  排序算法时间复杂度 + O(n)
+//思路3. map和set 做，
