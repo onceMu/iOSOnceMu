@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void rotateArrayOneByOne(int *nums,int n);
 //从有序的二维数组中找到x对应的值
 //从数组的第一行的最后一个元素开始遍历，每次删除掉一行或者一列，缩小排序位置
 //因为数组是有序的，所以key 要么比数组第一行最后一列的值大、或者小、或者相等
@@ -281,3 +282,202 @@ int maxProfit2(int * prices, int pricesSize) {
 //思路1. 两层for 循环。时间复杂度O(n^2)
 //思路2. 先排序，然后再一次for循环  排序算法时间复杂度 + O(n)
 //思路3. map和set 做，
+int  findMutable(int *nums, int numsSize) {
+    for (int i = 0; i<numsSize; i++) {
+        for (int j = i+1; j <numsSize; j++) {
+            if (nums[i] == nums[j]) {
+                return 1;
+            }
+        }
+    }
+    return -1;
+}
+//先排序、然后再看一次遍历完成
+
+
+//向右旋转数组k次
+//最重要的特征是，每次每次旋转一步之后，原位置i 的新 index = (i + 1)%n;
+//同理 旋转k次之后，原位置i的新index = (i+k)%n;
+//void rotaArray (int *nums,int n,int k) {
+//    int index = 0;
+//    int temp = nums[0];
+//    int newIndex = 0;
+//    for (int i = 0; i<n; ++i) {
+//        temp = nums[i];
+//        newIndex = (i + k) % n;
+//        nums[i] = nums[newIndex];
+//        nums[newIndex] = temp;
+//        temp = nums[i];
+//        index = newIndex;
+//    }
+//}
+
+
+//向右旋转数组k次
+//可以一个一个进行旋转
+void roatArray(int *nums,int n,int k) {
+    for (int i = 1; i < k ; i ++) {
+        rotateArrayOneByOne(nums, n);
+    }
+}
+
+void rotateArrayOneByOne (int *nums,int n) {
+    int i = 0;
+    int last = nums[n-1];
+    for ( i = n-1; i >0; i--) {
+        nums[i] = nums[i-1];
+    }
+    nums[0] = last;
+}
+
+//下面思路是leetcode 大神解法
+void rotate(int *nums, int numsSize, int k) {
+    int i;
+    int pos;
+    int tmp;
+    int direction = 1;
+    if (!nums) return;
+    if (!numsSize) return;
+    k %= numsSize; //k = k%numsSize;求出k与数组长度的模，求模的意思是 1%7 = 1;
+    if (k == 0) return; //如果是移动k步或者 数组长度的整数倍，则说明不需要移动
+    if (k > numsSize / 2) {
+        k = numsSize - k;
+        direction = -1;
+    }
+    
+    if ((numsSize % k) == 0) {
+        int j;
+        for (j = 0; j < k; j++) {
+            pos = j;
+            tmp = nums[pos];
+            for (i = 0; i < numsSize/k; i++) {
+                int newpos = (pos + direction*k + numsSize) % numsSize;
+                int newtmp = nums[newpos];
+                nums[newpos] = tmp;
+                pos = newpos;
+                tmp = newtmp;
+                
+            }
+        }
+    } else {
+        pos = 0;
+        tmp = nums[pos];
+        for (i = 0; i < numsSize; i++) {
+            int newpos = (pos + direction*k + numsSize) % numsSize;
+            int newtmp = nums[newpos];
+            nums[newpos] = tmp;
+            pos = newpos;
+            tmp = newtmp;
+            
+        }
+    }
+}
+
+//k = k % numsSize;
+//if(k == 0){
+//    return;
+//}
+//int nums[k];
+//int loc = 0;
+//for(int i=0; i<numsSize ;++i){
+//    int j=(k+i) % numsSize;
+//    if(i < k){
+//        nums[loc] = nums[j];
+//        nums[j] = nums[i];
+//        loc = (loc+1)%k;
+//    }
+//    else{
+//        int t = nums[j];
+//        nums[j] = nums[loc];
+//        nums[loc] = t;
+//        loc = (loc+1)%k;
+//    }
+//}
+
+//找出数组中只出现一次的值
+//1.按位异 操作。2^2 = 0; 0^2 = 0;最终异出来的值就是单独的那个值
+int findSingleNumber(int *nums, int n) {
+    int result = 0;
+    for (int i = 0; i<n; i++) {
+        result ^= nums[i];
+    }
+    return result;
+}
+
+//
+
+//第一个思路
+//1.分开判断每一行、每一列是否有重复的
+//2.再将数独划分成3*3 的小方块，来判断是否有重复的
+int isValidSudoku(char ** board, int boardRowSize, int boardColSize) {
+    if (boardRowSize != 9 || boardColSize != 9) {
+        return -1;
+    }
+    int row[9][10] = {0};
+    int colum[9][10] = {0};
+    int box[9][10] = {0};
+    int temp = 0;
+    for (int i = 0; i<boardRowSize; i++) {
+        for (int j = 0; j<boardColSize; j++) {
+            if (board[i][j] != '.') {
+                temp = board[i][j] - '0';
+                if (row[temp] == 0) {
+                    row[i][temp] = 1;
+                }else {
+                    return -1;
+                }
+                if (colum[j][temp] == 0) {
+                    colum[j][temp] = 1;
+                }else {
+                    return -1;
+                }
+                if (box[i/3 * 3 + j/3][temp] == 0) {
+                    box[i/3 *3 + j/3][temp] = 1;
+                }else {
+                    return -1;
+                }
+                
+            }
+        }
+    }
+    return -1;
+}
+
+
+int isValidSudoku2(char ** board, int boardRowSize, int boardColSize) {
+    if (boardColSize != 9 || boardRowSize != 9) {
+        return -1;
+    }
+    int row[10];
+    int i,j,k,l,num;
+    for (i = 0; i < boardRowSize; i++) {
+//        memset(row,0,sizeof(row));
+        for (j = 0; j < boardColSize; j++) {
+            if (board[i][j] == '.') {
+                continue;
+            }
+            if (board[i][j] < '0' || board[i][j] > '9') {
+                return -1;
+            }
+            num = board[i][j] - '0';
+            if (row[num] != 0) {
+                return -1;
+            }
+            row[num] = 1;
+        }
+    }
+//    for(i=0;i<9;i+=3){
+//        for(j=0;j<9;j+=3){
+//            for(k=i;k<i+3;k++){
+//                for(l=j;l<j+3;l++){
+//                    if(board[k][l]=='.')continue;
+//                    num = board[k][l]-'0';
+//                    if(box[num]!=0)return false;
+//                    box[num]=1;
+//                }
+//            }
+//        }
+//    }
+    
+    return -1;
+}

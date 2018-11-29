@@ -685,3 +685,65 @@ struct Node *sortList(struct Node *head) {
 
 
 
+//相加两个链表
+//struct Node *addTwoList(struct Node *l1, struct Node *l2) {
+//    if (l1 == NULL) {
+//        return l2;
+//    }
+//    if (l2 == NULL) {
+//        return l1;
+//    }
+//    int a = 0;
+//    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+//    while ( l1 || l2) {
+//        int v1 = (l1 ? l1 ->data : 0);
+//        int v2 = (l2 ? l2 ->data : 0);
+//        int temp = v1 +v2 + a;
+//        if (temp >= 10) {
+//            a = temp - 10;
+//            temp = temp - 10;
+//        }else {
+//            a = 0;
+//        }
+//
+//    }
+//}
+
+//if (head == NULL) {
+//    return head;
+//}
+//int count = 1;
+//struct ListNode *temp = head;
+//while (temp ->next != NULL) {
+//    temp = temp ->next;
+//    count ++;
+//}
+//if (n >= count) {
+//    return head ->next;
+//}
+//temp = head;
+//for (int i = 0; i< count -n - 1; i++) {
+//    temp = temp ->next;
+//}
+//temp ->next = temp ->next ->next;
+//return head;
+//struct ListNode *pre = NULL;
+//struct ListNode *current = head;
+//struct ListNode *next = NULL;
+//while (current != NULL) {
+//    next = current ->next;
+//    current ->next = pre;
+//    pre = current;
+//    current = next;
+//}
+//head = pre;
+//return head;
+
+//检查链表是否是回文链表
+int checkLinkListIsPalindromeList(struct Node *head) {
+    if (head == NULL) {
+        return -1;
+    }
+    return 1;
+    
+}

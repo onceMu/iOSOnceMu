@@ -104,6 +104,11 @@ void printString(NSString *a) {
     NSLog(@"%p %p %@",a,b,object_getClass(b));
     
     
+    
+    NSArray *data = @[@(2),@(2),@(1)];
+    int xxxx = [self findMutableInArray:data];
+    
+    
     NSMutableString *mutable = [NSMutableString string];
     NSString *immutable;
     char c = 'a';
@@ -138,6 +143,32 @@ void printString(NSString *a) {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (int)findMutableInArray:(NSArray *)data {
+    int result = 0;
+    for (int i = 0; i<data.count; i++) {
+        int number = [data[i] intValue];
+        result ^= number;
+    }
+    return result;
+}
+
+/*
+ 运算符
+ =  简单赋值运算符
+ +=  加且赋值运算符
+ -=  减且赋值运算符
+ *=  乘且赋值运算符
+ /=  除且赋值运算符
+ %=  求模且赋值运算符
+ <<=  左移且赋值运算符
+ >>=  右移且赋值运算符
+ &=   按位与且赋值运算符
+ ^=   按位异且赋值运算符
+ |=   按位或且赋值运算符
+ 
+ 
+ */
 
 
 @end
