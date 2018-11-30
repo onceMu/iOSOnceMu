@@ -28,4 +28,8 @@
     return self;
 }
 
+- (void)test {
+    NSLog(@"哈哈哈哈哈 %s",__func__);
+}
+
 @end
