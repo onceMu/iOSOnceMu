@@ -12,11 +12,11 @@
 #include <string.h>
 
 
-typedef struct BitNode {
+typedef struct TreeNode {
     int data;
-    struct BitNode *leftChild;
-    struct BitNode *rightChild;
-}BitNode,*BitTree;
+    struct TreeNode *leftChild;
+    struct TreeNode *rightChild;
+};
 
 @implementation Tree
 
@@ -76,5 +76,30 @@ typedef struct BitNode {
  
  */
 
+
+//查找树的深度
+int maxDepth(struct TreeNode *root) {
+    if(root == NULL) {
+        return 0;
+    }
+    int left = maxDepth(root ->leftChild);
+    int right = maxDepth(root ->rightChild);
+    return 1 + ((left > right) ? left : right);
+}
+
+//判断树是否是二叉搜索树
+//二叉搜索树的是如果存在左子树、左子树比跟节点小，如果存在右子树，右子树比根节点大
+//需要注意的是，要记录下左子树的最大值、以及右子树的最小值与根节点进行比较
+bool checkIsBinarySearchTree(struct TreeNode *root) {
+    return checkBinarySearchTree(root, LONG_MIN, LONG_MAX);
+}
+
+bool checkBinarySearchTree(struct TreeNode *root,long min,long max) {
+    if (root == NULL) {
+        return 1;
+    }
+    if (root->data <= min || root->data >= max) return false;
+    return (checkBinarySearchTree(root ->leftChild, min, root ->data) && checkBinarySearchTree(root ->rightChild, root ->data, max));
+}
 
 @end

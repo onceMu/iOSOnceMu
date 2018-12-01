@@ -82,3 +82,45 @@ int* shortestToChar(char* S, char C, int* returnSize) {
     return array;
 }
  */
+
+//动态规划
+//打家窃舍，不能抢劫相邻的房子
+//思路就是不断的找出当前最大值与上一次最大值进行比较
+//[2,1,1,2,2]
+//上上次最大值 2、上次最大值2
+//当前最大值3、上次最大值2 //第一次循环
+//当前最大值4、上次最大值3 //第二次循环
+//当前最大值5、上次最大值4 //第三次循环
+int rob(int* nums, int numsSize) {
+    if (numsSize <= 1) {
+        return numsSize ==0 ? 0 : nums[0];
+    }
+    //记录一个上一次的最大值，和上上次最大值
+    //分别用上上次最大值+当前值  与 上一次最大值进行比较
+    
+    //最初的最大值
+    int maxA = nums[0];
+    int maxB = (nums[0] > nums[1]) ? nums[0] : nums[1];
+    for (int i = 2;i <numsSize;i++) {
+        int temp = maxB;
+        maxB = ((nums[i] + maxA) > maxB) ? (nums[i] + maxA) : maxB;
+        maxA = temp;
+    }
+    return maxB;
+}
+
+//数组中 和值最大的连续子序列和值是多少
+//思路
+//从0 开始遍历、记录一个max、同时记录一个sum
+//max = nums[0];sum = nums[0];
+//遍历，当sum > 0的时候，sum 就加上当前的nums[i],判断sum与max大小，如果sum > max 就重新给max赋值
+//如果sum < 0就丢弃掉上一次的sum，重新复制
+int maxSubArray(int *nums,int numsSize) {
+    int max = nums[0];
+    int sum = nums[0];
+    for (int i = 1; i<numsSize ; i ++) {
+        sum = (sum > 0) ? (sum + nums[i]) : sum;
+        max = (max > sum) ? max : sum;
+    }
+    return max;
+}
