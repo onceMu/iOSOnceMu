@@ -1,0 +1,26 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MVVMTest' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+    pod 'ReactiveObjC'
+    pod 'libextobjc'
+    pod '500px-iOS-api'
+    pod 'SVProgressHUD', '~>0.9'
+    pod 'AFNetworking', '~>3.1'
+    pod 'YYModel', '~> 1.0.4'
+  # Pods for MVVMTest
+
+  target 'MVVMTestTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MVVMTestUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
