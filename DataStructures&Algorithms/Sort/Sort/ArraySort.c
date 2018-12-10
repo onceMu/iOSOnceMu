@@ -481,3 +481,207 @@ int isValidSudoku2(char ** board, int boardRowSize, int boardColSize) {
     
     return -1;
 }
+
+
+//返回x的平方根
+int mySqrt(int x) {
+    long right = (x/2) + 1;
+    long left = 0;
+    while (left <= right) {
+        long m = left + (right - left) / 2;
+        if (m * m > x) {
+            right = m - 1;
+        } else {
+            left = m + 1;
+        }
+    }
+    return (int)left - 1;
+}
+
+
+//给定字符串数组，查找数组中存在的字符串C，查找字符串数组中每个字符串离C 最近的距离数组
+//字符串数组中离给定字符串最小的距离
+//需要考虑的是这个值可能在前面，也可能在后面
+//遍历数组，然后分别从当前值查找左边和右边第一个符合的位置，然后比较大小。
+//时间复杂度 O(n^2)
+/*
+ int* shortestToChar(char* S, char C, int* returnSize) {
+ int length = strlen(S);
+ *returnSize = length;
+ int *array = (int*)malloc(sizeof(int) *(*returnSize));
+ for(int i = 0;i < *returnSize;i ++) {
+ array[i] = -1;
+ }
+ for(int i = 0;i < *returnSize;i ++) {
+ if(S[i] == C) {
+ array[i] = 0;
+ }else {
+ //找出
+ int leftIndex = -1;
+ int rightIndex = -1;
+ 
+ int leftRight = i;
+ int rightLeft = i+1;
+ while(leftRight >= 0) {
+ if(S[leftRight] == C) {
+ leftIndex = i - leftRight;
+ break;
+ }
+ leftRight --;
+ }
+ while(rightLeft <= *returnSize -1) {
+ if(S[rightLeft] == C) {
+ rightIndex = rightLeft - i;;
+ break;
+ }
+ rightLeft ++;
+ }
+ if(leftIndex >0 || rightIndex > 0) {
+ if (leftIndex > 0 && rightIndex > 0) {
+ if (leftIndex > rightIndex && rightIndex) {
+ array[i] = rightIndex;
+ }else {
+ array[i] = leftIndex;
+ }
+ }else if(leftIndex > 0 && rightIndex < 0) {
+ array[i] = leftIndex;
+ }else {
+ array[i] = rightIndex;
+ }
+ }
+ }
+ }
+ return array;
+ }
+ */
+
+//动态规划
+//打家窃舍，不能抢劫相邻的房子
+//思路就是不断的找出当前最大值与上一次最大值进行比较
+//[2,1,1,2,2]
+//上上次最大值 2、上次最大值2
+//当前最大值3、上次最大值2 //第一次循环
+//当前最大值4、上次最大值3 //第二次循环
+//当前最大值5、上次最大值4 //第三次循环
+int rob(int* nums, int numsSize) {
+    if (numsSize <= 1) {
+        return numsSize ==0 ? 0 : nums[0];
+    }
+    //记录一个上一次的最大值，和上上次最大值
+    //分别用上上次最大值+当前值  与 上一次最大值进行比较
+    
+    //最初的最大值
+    int maxA = nums[0];
+    int maxB = (nums[0] > nums[1]) ? nums[0] : nums[1];
+    for (int i = 2;i <numsSize;i++) {
+        int temp = maxB;
+        maxB = ((nums[i] + maxA) > maxB) ? (nums[i] + maxA) : maxB;
+        maxA = temp;
+    }
+    return maxB;
+}
+
+//数组中 和值最大的连续子序列和值是多少
+//思路
+//从0 开始遍历、记录一个max、同时记录一个sum
+//max = nums[0];sum = nums[0];
+//遍历，当sum > 0的时候，sum 就加上当前的nums[i],判断sum与max大小，如果sum > max 就重新给max赋值
+//如果sum < 0就丢弃掉上一次的sum，重新复制
+//int maxSubArray(int *nums,int numsSize) {
+//    int max = nums[0];
+//    int sum = nums[0];
+//    for (int i = 1; i<numsSize ; i ++) {
+//        sum = (sum > 0) ? (sum + nums[i]) : sum;
+//        max = (max > sum) ? max : sum;
+//    }
+//    return max;
+//}
+
+//找出数组中超过一半的数字
+int majorityElement(int *nums, int numsSize) {
+    int indexMax = 0;
+    int count = 0;
+    for (int i = 1; i< numsSize; i++) {
+        if (nums[indexMax] == nums[i]) {
+            count ++;
+        }else {
+            count --;
+        }
+        if (count == 0) {
+            count = 1;
+            indexMax = i;
+        }
+    }
+    return nums[indexMax];
+}
+
+
+//查找重复的数据，
+//给定一个数组、并且给定一个k，如果数组中存在重复的数字，切值对应的下标为 j、i。并且 j与i 的差值 小于等于k，则返回true
+//否则返回false
+//笨笨办法，两遍for循环
+int containsNearbyDuplicate(int *nums,int numsSize,int k) {
+    for (int i = 0;i < numsSize -1;i++) {
+        for(int j = i+1; j< numsSize;j++) {
+            if(nums[j] == nums[i]) {
+                if (j-i <= k) {
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+//hashTable 实现
+//先定义hashTable
+typedef struct ListNode {
+    int x, d;
+    struct ListNode *next;
+} ListNode;
+
+typedef struct HashTable {
+    ListNode **data;
+    int size;
+}HashTable;
+
+
+ListNode *initNode(int x, int d, ListNode *head) {
+    ListNode *p = (ListNode *)malloc(sizeof(head));
+    p ->x = x;
+    p ->d = d;
+    p ->next = head;
+    return p;
+}
+
+HashTable *initHashTable(int n) {
+    HashTable *h = (HashTable *)malloc(sizeof(HashTable));
+    h ->size = n << 1;
+    h ->data = (ListNode **)calloc(sizeof(ListNode *), h ->size);
+    return h;
+}
+
+int search(HashTable *h,int x, int d, int k) {
+    int ind = abs(x) % h->size;
+    ListNode *p = h->data[ind];
+    while (p && ((p->x != x) || (d - p->d >k))) {
+        p = p ->next;
+    }
+    return p != NULL;
+}
+
+int insert(HashTable *h, int x, int d) {
+    int ind = abs(x) % h->size;
+    h->data[ind] = initNode(x, d, h->data[ind]);
+    return 1;
+}
+
+
+int containsNearbyDuplicatezzz(int* nums, int numsSize, int k) {
+    HashTable *h = initHashTable(numsSize);
+    for (int i = 0; i < numsSize; i++) {
+        if (search(h, nums[i], i, k)) return 1;
+        insert(h, nums[i], i);
+    }
+    return 0;
+}

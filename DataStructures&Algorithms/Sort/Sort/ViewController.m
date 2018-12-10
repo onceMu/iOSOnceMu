@@ -112,14 +112,7 @@ void printString(NSString *a) {
     int xxxx = [self findMutableInArray:data];
     
     
-    NSMutableString *mutable = [NSMutableString string];
-    NSString *immutable;
-    char c = 'a';
-    do {
-        [mutable appendFormat: @"%c", c++];
-        immutable = [mutable copy];
-        NSLog(@"0x%016lx %@ %@", immutable, immutable, object_getClass(immutable));
-    } while(((uintptr_t)immutable & 1) == 1);
+    
     
     
     

@@ -1,0 +1,19 @@
+//
+//  MVVM-Prefix.pch
+//  MVVMTest
+//
+//  Created by le on 2018/12/10.
+//  Copyright © 2018 le. All rights reserved.
+//
+
+#ifndef MVVM_Prefix_pch
+#define MVVM_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <ReactiveObjC/ReactiveObjC.h>
+#import <500px-iOS-api/PXAPI.h>
+#import <libextobjc/EXTScope.h>
+
+#endif /* MVVM_Prefix_pch */

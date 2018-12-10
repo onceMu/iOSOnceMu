@@ -25,7 +25,6 @@
 		8BC1F95621A7CF4D00829183 /* HTTP-TCP:IP.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1F95521A7CF4D00829183 /* HTTP-TCP:IP.png */; };
 		8BC1F95821A7CFFA00829183 /* HTTP-TCP:IP2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1F95721A7CFFA00829183 /* HTTP-TCP:IP2.png */; };
 		8BC1F95A21A7EB9200829183 /* HTTPS-HTTPS.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1F95921A7EB9200829183 /* HTTPS-HTTPS.png */; };
-		8BC1F96521ABEF7A00829183 /* Search.c in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F96421ABEF7A00829183 /* Search.c */; };
 		8BC1F96E21AE818400829183 /* MemoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F96D21AE818400829183 /* MemoryManager.m */; };
 		8BDA60D2216F2CA10018624C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA60D1216F2CA10018624C /* TestViewController.m */; };
 		FBB9529E2189FB86000A6E35 /* ArraySort.c in Sources */ = {isa = PBXBuildFile; fileRef = FBB9529D2189FB86000A6E35 /* ArraySort.c */; };
@@ -83,8 +82,6 @@
 		8BC1F95521A7CF4D00829183 /* HTTP-TCP:IP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HTTP-TCP:IP.png"; sourceTree = "<group>"; };
 		8BC1F95721A7CFFA00829183 /* HTTP-TCP:IP2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HTTP-TCP:IP2.png"; sourceTree = "<group>"; };
 		8BC1F95921A7EB9200829183 /* HTTPS-HTTPS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HTTPS-HTTPS.png"; sourceTree = "<group>"; };
-		8BC1F96321ABEF7A00829183 /* Search.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
-		8BC1F96421ABEF7A00829183 /* Search.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Search.c; sourceTree = "<group>"; };
 		8BC1F96C21AE818400829183 /* MemoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoryManager.h; sourceTree = "<group>"; };
 		8BC1F96D21AE818400829183 /* MemoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemoryManager.m; sourceTree = "<group>"; };
 		8BDA60D0216F2CA10018624C /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -165,8 +162,6 @@
 				8B635A32219EBE7900077C63 /* PBPerson.m */,
 				8BC1F95121A7CBAC00829183 /* HTTP.h */,
 				8BC1F95221A7CBAC00829183 /* HTTP.m */,
-				8BC1F96321ABEF7A00829183 /* Search.h */,
-				8BC1F96421ABEF7A00829183 /* Search.c */,
 				8B72577120F5F0B0003903AB /* LinkList.h */,
 				8B72573F20F5B416003903AB /* Main.storyboard */,
 				8B72574220F5B418003903AB /* Assets.xcassets */,
@@ -351,7 +346,6 @@
 				8B72574920F5B418003903AB /* main.m in Sources */,
 				8B72573B20F5B416003903AB /* AppDelegate.m in Sources */,
 				8B72577020F5E152003903AB /* StringInterview.c in Sources */,
-				8BC1F96521ABEF7A00829183 /* Search.c in Sources */,
 				8B6359BC219D7ED500077C63 /* AutoDictionary.m in Sources */,
 				8B72576D20F5B426003903AB /* Sort.c in Sources */,
 			);
