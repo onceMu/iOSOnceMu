@@ -43,7 +43,10 @@ void printString(NSString *a) {
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
-    
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        NSLog(@"123");
+    }];
+
     int x = 10;
 //    x ++;
 //    先加x的值，然后将x的值再加1
