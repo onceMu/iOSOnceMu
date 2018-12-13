@@ -337,6 +337,79 @@ bool hasCycle(struct Node *head) {
     return false;
 }
 
+//判断链表是否有环，如果有环，找出第一个换入口
+//快慢指针，让快慢指针第一次相遇，相遇后，让满指针y每次走一步，如果u与head 第一次相遇，则交点是环的入口
+struct Node * hasCycleListNode (struct Node *head) {
+    if (head == NULL || head ->next == NULL) {
+        return NULL;
+    }
+    struct Node *fast = head->next;
+    struct Node *solw = head;
+    while(fast != solw) {
+        if (fast == NULL || fast -> next == NULL) {
+            return NULL;
+        }
+        fast = fast ->next ->next;
+        solw = solw ->next;
+    }
+    while (head != solw ->next) {
+        head = head ->next;
+        solw = solw ->next;
+    }
+    return head;
+}
+
+//链表成对交换节点,递归找到最后一个节点，然后从后开始往前交换
+struct Node *swipeListNode (struct Node *head) {
+    if (head == NULL || head ->next == NULL) {
+        return head;
+    }
+    struct Node *temp = head ->next;
+    head ->next = swipeListNode(head->next ->next);
+    temp ->next = head;
+    return temp;
+}
+
+
+//复杂指针操作，先交换刚开始的两个节点，操作完成之后，将指针指向指向第3个节点，交换第三个、第四个节点
+struct Node *swipeListNode2 (struct Node *head) {
+    if (head == NULL || head ->next == NULL) {
+        return head;
+    }
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *pre = temp;
+    temp ->next = head;
+    while (pre ->next && pre ->next ->next) {
+        struct Node *t = pre->next->next;
+        pre->next->next = t->next;
+        t->next = pre->next;
+        pre->next = t;
+        pre = t->next;
+    }
+    return temp ->next;
+}
+
+
+struct Node *removeDuplilyNode (struct Node *head) {
+    if (head == NULL || head -> next == NULL) {
+        return NULL;
+    }
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    temp ->next = head;
+    head = temp;
+    while (head ->next && head ->next ->next) {
+        if (head ->next ->data == head ->next ->next ->data) {
+            int data = head ->next ->data;
+            while (head ->next && head ->next ->data == data) {
+                head = head ->next;
+            }
+        }else {
+            head = head;
+        }
+    }
+    return temp ->next;
+}
+
 
 //判断两个链表是否相交，并且指出第一个交点
 struct Node *getIntersectionNode(struct Node *headA,struct Node *headB) {
