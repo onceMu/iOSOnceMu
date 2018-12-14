@@ -9,27 +9,66 @@
 #import <Foundation/Foundation.h>
 #import <malloc/malloc.h>
 #import <objc/runtime.h>
+#import "Block.h"
 
 //
 //static int a;//静态全局变量
 //int c ;//全局变量
 
-void (^blk1)(void) = ^{printf("Global Block\n");};
+//void (^blk1)(void) = ^{printf("Global Block\n");};
+//typedef int(^blkt)(int);
+//blkt func(int rate) {
+//    return ^(int count) {
+//        return rate * 2;
+//    };
+//}
+
+
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
 //        static int b; //静态变量
-        
+//
 //        __block int val = 10;
+//        __block int sss = 10;
 //        const char *fmt = "Val = %d\n";
-////        NSMutableArray *array = [NSMutableArray array];
+//        NSMutableArray *array = [NSMutableArray array];
 //        void (^blk)(void) = ^{
-//            printf(fmt,val);
 //            val = 1;
+//            sss = 20;
+//        };
+//        void (^blk1)(void) = ^ {
+//            val = 2;
 //        };
 //        blk();
-        blk1();
+//        blk1();
+//        blkt(2);
+        
+//        blk1();
+        
+        
+        Block *blcok = [[Block alloc] init];
+//        __block int val = 0;
+//        void (^blk)(void) = [^{
+//                                 val++;
+//                            }copy];
+//        val++;
+//        blk();
+//        NSLog(@"val = %d",val);
+//
+//        id __strong array = [[NSMutableArray alloc]init];
+//        void (^blk2)(id object) = [^(id obj){
+//            [array addObject:obj];
+//            NSLog(@"array count = %ld",[array count]);
+//        } copy];
+//        NSObject *obj = [[NSObject alloc] init];
+//        NSObject *obj1 = [[NSObject alloc] init];
+//        NSObject *obj2 = [[NSObject alloc] init];
+//        blk2(obj);
+//        blk2(obj1);
+//        blk2(obj2);
     }
     return 0;
 }
