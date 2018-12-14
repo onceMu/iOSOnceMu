@@ -16,11 +16,14 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
 
-    
-        
+        void (^blk)(void) = ^{
+            printf("Block\n");
+        };
+        blk();
     }
     return 0;
 }
+
 
 
 //id __attribute__((objc_ownership(strong))) obj = ((NSObject *(*)(id, SEL))(void *)objc_msgSend)((id)((NSObject *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("NSObject"), sel_registerName("alloc")), sel_registerName("init"));
