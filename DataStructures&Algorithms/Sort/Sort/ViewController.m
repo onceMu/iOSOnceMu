@@ -31,7 +31,7 @@ void printString(NSString *a) {
     [super viewDidLoad];
     
     PBPerson *person = [[PBPerson alloc]initWithFirstName:@"a" lastName:@"b"];
-    [person test];
+
     
     
     self.view.backgroundColor = [UIColor whiteColor];

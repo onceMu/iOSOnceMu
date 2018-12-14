@@ -9,6 +9,8 @@
 #import "TestViewController.h"
 #import "AutoDictionary.h"
 
+static int aaa;
+
 @interface TestViewController ()
 
 @property (nonatomic, strong) NSTimer *timer;
@@ -24,6 +26,17 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    static int testStatic;
+    
+    NSLog(@"哈哈的值是多少哈哈%d",testStatic);
+    NSLog(@"哈哈的值是多少哈哈%d",aaa);
+    
+    testStatic = 100;
+    aaa = 200;
+    
+    
+    
     
 //    AutoDictionary *dict = [AutoDictionary new];
 //    dict.date = [NSDate dateWithTimeIntervalSince1970:475372800];
@@ -113,9 +126,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    aaa = 1000;
+}
+
 - (void)dealloc {
     NSLog(@"%s",__func__);
-    [super dealloc];
+    
 }
 
 /*

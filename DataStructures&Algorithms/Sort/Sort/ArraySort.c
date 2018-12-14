@@ -614,6 +614,31 @@ int majorityElement(int *nums, int numsSize) {
     }
     return nums[indexMax];
 }
+//找出数组中超过一半的数字
+//笨办法m，两次循环
+int majorityElementMethods(int *nums, int numsSize) {
+    int maxCount = 0;
+    int index = -1; // sentinels
+    for(int i = 0; i < numsSize; i++)
+    {
+        int count = 0;
+        for(int j = 0; j < numsSize; j++)
+        {
+            if(nums[i] == nums[j])
+                count++;
+        }
+        
+        // update maxCount if count of
+        // current element is greater
+        if(count > maxCount)
+        {
+            maxCount = count;
+            index = i;
+        }
+    }
+    
+    return nums[maxCount];
+}
 
 
 //查找重复的数据，
