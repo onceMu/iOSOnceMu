@@ -32,38 +32,42 @@ typedef void(^blk_t)(void);
 //        typedef void (^blkt)(void);
 //        blkt blk = (blkt)[obj objectAtIndex:0];
 //        blk();
-        blkt = ^{
-            NSLog(@"self = %@",self);
-        };
+//        blkt = ^{
+//            NSLog(@"self = %@",self);
+//        };
     }
     return self;
 }
 
-- (void)dealloc {
-    NSLog(@"%s",__func__);
-}
+//- (void)dealloc {
+//    NSLog(@"%s",__func__);
+//}
 
-- (NSArray *)blockArray {
-    int val = 10;
-    return [[NSArray alloc] initWithObjects:[^{NSLog(@"blk0:%d",val);} copy],[^{NSLog(@"blk1:%d",val);} copy], nil];
-}
+//- (NSArray *)blockArray {
+//    int val = 10;
+//    return [[NSArray alloc] initWithObjects:[^{NSLog(@"blk0:%d",val);} copy],[^{NSLog(@"blk1:%d",val);} copy], nil];
+//}
+//
+//- (void)test:(BOOL(^)(NSInteger))numerr {
+//    BOOL xx = numerr(2);
+//    if (xx) {
+//        NSLog(@"xxxxx ");
+//    }else {
+//        NSLog(@"bbbbb ");
+//    }
+//}
+//
+//- (void)testxxx {
+//    [self test:^BOOL(NSInteger number) {
+//        if (number == 3) {
+//            return YES;
+//        }
+//        return NO;
+//    }];
+//}
 
-- (void)test:(BOOL(^)(NSInteger))numerr {
-    BOOL xx = numerr(2);
-    if (xx) {
-        NSLog(@"xxxxx ");
-    }else {
-        NSLog(@"bbbbb ");
-    }
-}
-
-- (void)testxxx {
-    [self test:^BOOL(NSInteger number) {
-        if (number == 3) {
-            return YES;
-        }
-        return NO;
-    }];
+- (void)setTitle:(NSString *)title {
+    _title = title;
 }
 
 @end

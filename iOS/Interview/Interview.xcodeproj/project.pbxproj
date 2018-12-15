@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8B0DF3842175C1660012AC2C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DF3832175C1660012AC2C /* main.m */; };
 		8B5FAE3F21C23687002C4C66 /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FAE3E21C23687002C4C66 /* Block.m */; };
-		8B5FAE4121C23E60002C4C66 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FAE4021C23E60002C4C66 /* main.cpp */; };
 		8BC1F95D21A7F86200829183 /* Father.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F95C21A7F86200829183 /* Father.m */; };
 		8BC1F96021A7F87500829183 /* Son.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F95F21A7F87500829183 /* Son.m */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,8 @@
 		8B0DF3832175C1660012AC2C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B5FAE3D21C23687002C4C66 /* Block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		8B5FAE3E21C23687002C4C66 /* Block.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
-		8B5FAE4021C23E60002C4C66 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8B5FAE4221C3382F002C4C66 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		8B5FAE4621C361CE002C4C66 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8BC1F95B21A7F86200829183 /* Father.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Father.h; sourceTree = "<group>"; };
 		8BC1F95C21A7F86200829183 /* Father.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Father.m; sourceTree = "<group>"; };
 		8BC1F95E21A7F87500829183 /* Son.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Son.h; sourceTree = "<group>"; };
@@ -70,11 +70,12 @@
 		8B0DF3822175C1660012AC2C /* Interview */ = {
 			isa = PBXGroup;
 			children = (
-				8B5FAE4021C23E60002C4C66 /* main.cpp */,
+				8B5FAE4621C361CE002C4C66 /* main.cpp */,
 				8BC1F97121AE84B100829183 /* main.s */,
 				8B0DF3832175C1660012AC2C /* main.m */,
 				8B5FAE3D21C23687002C4C66 /* Block.h */,
 				8B5FAE3E21C23687002C4C66 /* Block.m */,
+				8B5FAE4221C3382F002C4C66 /* Block.cpp */,
 				8BC1F95B21A7F86200829183 /* Father.h */,
 				8BC1F95C21A7F86200829183 /* Father.m */,
 				8BC1F95E21A7F87500829183 /* Son.h */,
@@ -143,7 +144,6 @@
 				8BC1F96021A7F87500829183 /* Son.m in Sources */,
 				8B0DF3842175C1660012AC2C /* main.m in Sources */,
 				8B5FAE3F21C23687002C4C66 /* Block.m in Sources */,
-				8B5FAE4121C23E60002C4C66 /* main.cpp in Sources */,
 				8BC1F95D21A7F86200829183 /* Father.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

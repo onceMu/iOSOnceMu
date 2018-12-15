@@ -106,6 +106,7 @@ struct __AtAutoreleasePool {
 };
 
 #define __OFFSETOFIVAR__(TYPE, MEMBER) ((long long) &((TYPE *)0)->MEMBER)
+static __NSConstantStringImpl __NSConstantStringImpl__var_folders_2w_cql7qq4s1tl9zbqy_43j0m_h0000gn_T_main_f36a8a_mi_0 __attribute__ ((section ("__DATA, __cfstring"))) = {__CFConstantStringClassReference,0x000007c8,"%@",2};
 
 
 
@@ -99102,35 +99103,55 @@ extern "C" __attribute__((visibility("default"))) id _Nullable
 extern "C" __attribute__((visibility("default"))) void
 (* _Nonnull _error)(id _Nullable, const char * _Nonnull, va_list)
      __attribute__((unavailable));
+#pragma clang assume_nonnull begin
 
 
+#ifndef _REWRITER_typedef_Block
+#define _REWRITER_typedef_Block
+typedef struct objc_object Block;
+typedef struct {} _objc_exc_Block;
+#endif
+
+struct Block_IMPL {
+	struct NSObject_IMPL NSObject_IVARS;
+};
 
 
+/* @end */
 
+#pragma clang assume_nonnull end
 
-struct __blk1_block_impl_0 {
+struct __main_block_impl_0 {
   struct __block_impl impl;
-  struct __blk1_block_desc_0* Desc;
-  __blk1_block_impl_0(void *fp, struct __blk1_block_desc_0 *desc, int flags=0) {
-    impl.isa = &_NSConcreteGlobalBlock;
+  struct __main_block_desc_0* Desc;
+  Block *blcok;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, Block *_blcok, int flags=0) : blcok(_blcok) {
+    impl.isa = &_NSConcreteStackBlock;
     impl.Flags = flags;
     impl.FuncPtr = fp;
     Desc = desc;
   }
 };
-static void __blk1_block_func_0(struct __blk1_block_impl_0 *__cself) {
-printf("Global Block\n");}
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  Block *blcok = __cself->blcok; // bound by copy
 
-static struct __blk1_block_desc_0 {
+            NSLog((NSString *)&__NSConstantStringImpl__var_folders_2w_cql7qq4s1tl9zbqy_43j0m_h0000gn_T_main_f36a8a_mi_0,blcok);
+        }
+static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {_Block_object_assign((void*)&dst->blcok, (void*)src->blcok, 3/*BLOCK_FIELD_IS_OBJECT*/);}
+
+static void __main_block_dispose_0(struct __main_block_impl_0*src) {_Block_object_dispose((void*)src->blcok, 3/*BLOCK_FIELD_IS_OBJECT*/);}
+
+static struct __main_block_desc_0 {
   size_t reserved;
   size_t Block_size;
-} __blk1_block_desc_0_DATA = { 0, sizeof(struct __blk1_block_impl_0)};
-static __blk1_block_impl_0 __global_blk1_block_impl_0((void *)__blk1_block_func_0, &__blk1_block_desc_0_DATA);
-void (*blk1)(void) = ((void (*)())&__global_blk1_block_impl_0);
-
+  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
+  void (*dispose)(struct __main_block_impl_0*);
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
 int main(int argc, const char * argv[]) {
     /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
-        ((void (*)(__block_impl *))((__block_impl *)blk1)->FuncPtr)((__block_impl *)blk1);
+        Block *blcok = ((Block *(*)(id, SEL))(void *)objc_msgSend)((id)((Block *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("Block"), sel_registerName("alloc")), sel_registerName("init"));
+        void (*blk3)(void) = ((void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, blcok, 570425344));
+        ((void (*)(__block_impl *))((__block_impl *)blk3)->FuncPtr)((__block_impl *)blk3);
     }
     return 0;
 }

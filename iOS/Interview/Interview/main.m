@@ -50,6 +50,11 @@ int main(int argc, const char * argv[]) {
         
         
         Block *blcok = [[Block alloc] init];
+        void (^blk3)(void) = ^{
+            NSLog(@"%@",blcok);
+        };
+        blk3();
+        
 //        __block int val = 0;
 //        void (^blk)(void) = [^{
 //                                 val++;
