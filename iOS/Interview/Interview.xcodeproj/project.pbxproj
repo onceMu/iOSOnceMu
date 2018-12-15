@@ -11,6 +11,10 @@
 		8B5FAE3F21C23687002C4C66 /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5FAE3E21C23687002C4C66 /* Block.m */; };
 		8BC1F95D21A7F86200829183 /* Father.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F95C21A7F86200829183 /* Father.m */; };
 		8BC1F96021A7F87500829183 /* Son.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F95F21A7F87500829183 /* Son.m */; };
+<<<<<<< HEAD
+		8BC1F96221A7F8DD00829183 /* Son.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BC1F96121A7F8DD00829183 /* Son.cpp */; };
+=======
+>>>>>>> 91b7ca732413d4ab6088eee2bcb8c9c0c9f8aaa3
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,7 +41,6 @@
 		8BC1F95E21A7F87500829183 /* Son.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Son.h; sourceTree = "<group>"; };
 		8BC1F95F21A7F87500829183 /* Son.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Son.m; sourceTree = "<group>"; };
 		8BC1F96121A7F8DD00829183 /* Son.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Son.cpp; sourceTree = "<group>"; };
-		8BC1F97121AE84B100829183 /* main.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = main.s; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +73,15 @@
 		8B0DF3822175C1660012AC2C /* Interview */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				8B5FAE4621C361CE002C4C66 /* main.cpp */,
+=======
+<<<<<<< HEAD
+=======
+				8B5FAE4021C23E60002C4C66 /* main.cpp */,
+>>>>>>> 9f7d84394d82ac23bc728f5fcfcb697572c9b1cc
 				8BC1F97121AE84B100829183 /* main.s */,
+>>>>>>> 91b7ca732413d4ab6088eee2bcb8c9c0c9f8aaa3
 				8B0DF3832175C1660012AC2C /* main.m */,
 				8B5FAE3D21C23687002C4C66 /* Block.h */,
 				8B5FAE3E21C23687002C4C66 /* Block.m */,
@@ -143,7 +153,14 @@
 			files = (
 				8BC1F96021A7F87500829183 /* Son.m in Sources */,
 				8B0DF3842175C1660012AC2C /* main.m in Sources */,
+<<<<<<< HEAD
+=======
 				8B5FAE3F21C23687002C4C66 /* Block.m in Sources */,
+<<<<<<< HEAD
+=======
+				8B5FAE4121C23E60002C4C66 /* main.cpp in Sources */,
+>>>>>>> 91b7ca732413d4ab6088eee2bcb8c9c0c9f8aaa3
+>>>>>>> 9f7d84394d82ac23bc728f5fcfcb697572c9b1cc
 				8BC1F95D21A7F86200829183 /* Father.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

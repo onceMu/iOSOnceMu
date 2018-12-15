@@ -28,6 +28,14 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+<<<<<<< HEAD
+        // insert code here...
+
+        void (^blk)(void) = ^{
+            printf("Block\n");
+        };
+        blk();
+=======
         
 //        static int b; //静态变量
 //
@@ -74,9 +82,11 @@ int main(int argc, const char * argv[]) {
 //        blk2(obj);
 //        blk2(obj1);
 //        blk2(obj2);
+>>>>>>> 91b7ca732413d4ab6088eee2bcb8c9c0c9f8aaa3
     }
     return 0;
 }
+
 
 
 //id __attribute__((objc_ownership(strong))) obj = ((NSObject *(*)(id, SEL))(void *)objc_msgSend)((id)((NSObject *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("NSObject"), sel_registerName("alloc")), sel_registerName("init"));
