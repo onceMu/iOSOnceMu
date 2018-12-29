@@ -25,3 +25,6 @@ ViewController 生命周期
 
 
 https://tech.okcupid.com/ios-performance-tutorial-from-okcupid/
+
+
+https://medium.com/@daniel_larsson/7-ways-to-to-speed-up-your-ui-on-ios-2d1be9bc11f0
