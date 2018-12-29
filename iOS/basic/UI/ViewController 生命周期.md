@@ -22,3 +22,6 @@ ViewController 生命周期
 
 8.viewDidDisappear
 
+
+
+https://tech.okcupid.com/ios-performance-tutorial-from-okcupid/
