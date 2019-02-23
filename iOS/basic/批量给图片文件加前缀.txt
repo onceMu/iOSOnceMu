@@ -1,0 +1,1 @@
+for file in `ls | egrep '.jpg|.png'`;do mv $file xxx-$file; done
