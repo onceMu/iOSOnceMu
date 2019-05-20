@@ -1,0 +1,14 @@
+target 'RWTFlickrSearch' do
+
+platform :ios, '9.0'
+
+pod 'ReactiveCocoa', '~> 2.1.8'
+pod 'objectiveflickr', '~> 2.0.4'
+pod 'LinqToObjectiveC', '~> 2.1.0'
+pod 'SDWebImage', '~> 4.0.0'
+
+
+inhibit_all_warnings!
+
+
+end
