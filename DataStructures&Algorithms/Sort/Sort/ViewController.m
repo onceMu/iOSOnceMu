@@ -218,8 +218,22 @@ void printString(NSString *a) {
     int xxxx = [self findMutableInArray:data];
     
     
-    
-    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(16.72, 7.22)];
+    [path addLineToPoint:CGPointMake(3.29, 20.83)];
+    [path addLineToPoint:CGPointMake(0.4, 18.05)];
+    [path addLineToPoint:CGPointMake(18.8, -0.47)];
+    [path addLineToPoint:CGPointMake(37.21, 18.05)];
+    [path addLineToPoint:CGPointMake(34.31, 20.83)];
+    [path addLineToPoint:CGPointMake(20.88, 7.22)];
+    [path addLineToPoint:CGPointMake(20.88, 42.18)];
+    [path addLineToPoint:CGPointMake(16.72, 42.18)];
+    [path addLineToPoint:CGPointMake(16.72, 7.22)];
+    [path closePath];
+    path.lineWidth = 1;
+    [[UIColor redColor] setStroke];
+    [path stroke];
+//    [self.view addSubview:path];
     
     
 //    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
@@ -231,6 +245,24 @@ void printString(NSString *a) {
 //            self.target = [NSString stringWithFormat:@"ddds %ld",i];
 //        });
 //    }
+    
+//    dispatch_queue_t serialDispatchQueue = dispatch_queue_create("com.test.queue", NULL);
+//
+//    dispatch_set_target_queue(dispatch_get_main_queue(), serialDispatchQueue);
+    dispatch_queue_t queue = dispatch_get_main_queue();
+//    dispatch_sync(queue, ^{
+//        dispatch_async(queue, ^{
+//            NSLog(@"hello");
+//        });
+//    });
+    
+//    NSMutableArray *dataxx = [NSMutableArray arrayWithCapacity:1];
+//    for (NSInteger i = 0; i<100000; i++) {
+//        dispatch_async(queue, ^{
+//            [dataxx addObject:[NSNumber numberWithInteger:i]];
+//        });
+//    }
+    
     
     // Do any additional setup after loading the view, typically from a nib.
 }

@@ -1,0 +1,15 @@
+for file in `ls | egrep '.jpg|.png'`;do mv $file snc_$file; done
+
+
+imagemagick 批量压缩图片
+find . -iname "*.png" -exec echo {} \; -exec convert {} {} \;
+
+for file in `ls *.png`;do mv $file `echo $file|sed 's/GhostBNB_//g'`;done
+
+
+打开编译时间
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
+
+展示动态库加载时间
+环境变量
+DYLD_PRINT_STATISTICS = 1
