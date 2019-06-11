@@ -9,6 +9,7 @@
 #include "ArraySort.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 void rotateArrayOneByOne(int *nums,int n);
 //从有序的二维数组中找到x对应的值
@@ -37,17 +38,32 @@ int findKeyInArray(int *matrix,int columes,int rows,int key) {
 //移除有序数组中的重复元素，并且返回新数组的大小
 //数组有序，所以从头开始遍历，判断当前元素与下一个元素的大小
 int revemoDuplicatesFromSortedArray(int *nums,int numsSize) {
-    int countNumber = 0;
-    int countSize = numsSize;
-    for (int i = 0; i < countSize - 1; i++) {
+    int numsCount = numsSize;
+    int count = 0;
+    for (int i = 0; i < numsSize - 1; i ++) {
         if (nums[i] == nums[i+1]) {
-            countNumber ++;
-            countSize --;
+            count ++;
+            numsCount --;
         }else {
-            nums[i + 1 - countNumber] = nums[i+1];
+            nums[i + 1 - count] = nums[i+1];
         }
     }
-    return countSize;
+    return numsCount;
+}
+
+int revemoDuplicatesFromSortedArray2(int *nums,int numsSize) {
+    if (numsSize <= 0) {
+        return 0;
+    }
+    int head = 1;
+    for (int i = 0; i < numsSize - 1; i ++) {
+        if (nums[i] != nums[i+1]) {
+            nums[head] = nums[i+1];
+            head ++;
+        }
+    }
+    nums[head] = '\0';
+    return head;
 }
 
 
@@ -409,9 +425,9 @@ int findSingleNumber(int *nums, int n) {
 //第一个思路
 //1.分开判断每一行、每一列是否有重复的
 //2.再将数独划分成3*3 的小方块，来判断是否有重复的
-int isValidSudoku(char ** board, int boardRowSize, int boardColSize) {
+bool isValidSudoku(char ** board, int boardRowSize, int boardColSize) {
     if (boardRowSize != 9 || boardColSize != 9) {
-        return -1;
+        return false;
     }
     int row[9][10] = {0};
     int colum[9][10] = {0};
@@ -424,29 +440,29 @@ int isValidSudoku(char ** board, int boardRowSize, int boardColSize) {
                 if (row[temp] == 0) {
                     row[i][temp] = 1;
                 }else {
-                    return -1;
+                    return false;
                 }
                 if (colum[j][temp] == 0) {
                     colum[j][temp] = 1;
                 }else {
-                    return -1;
+                    return false;
                 }
                 if (box[i/3 * 3 + j/3][temp] == 0) {
                     box[i/3 *3 + j/3][temp] = 1;
                 }else {
-                    return -1;
+                    return false;
                 }
                 
             }
         }
     }
-    return -1;
+    return true;
 }
 
 
-int isValidSudoku2(char ** board, int boardRowSize, int boardColSize) {
+bool isValidSudoku2(char ** board, int boardRowSize, int boardColSize) {
     if (boardColSize != 9 || boardRowSize != 9) {
-        return -1;
+        return false;
     }
     int row[10];
     int i,j,k,l,num;
@@ -457,11 +473,11 @@ int isValidSudoku2(char ** board, int boardRowSize, int boardColSize) {
                 continue;
             }
             if (board[i][j] < '0' || board[i][j] > '9') {
-                return -1;
+                return true;
             }
             num = board[i][j] - '0';
             if (row[num] != 0) {
-                return -1;
+                return true;
             }
             row[num] = 1;
         }
@@ -479,7 +495,7 @@ int isValidSudoku2(char ** board, int boardRowSize, int boardColSize) {
 //        }
 //    }
     
-    return -1;
+    return true;
 }
 
 
@@ -645,20 +661,20 @@ int majorityElementMethods(int *nums, int numsSize) {
 //给定一个数组、并且给定一个k，如果数组中存在重复的数字，切值对应的下标为 j、i。并且 j与i 的差值 小于等于k，则返回true
 //否则返回false
 //笨笨办法，两遍for循环
-int containsNearbyDuplicate(int *nums,int numsSize,int k) {
+bool containsNearbyDuplicate(int *nums,int numsSize,int k) {
     for (int i = 0;i < numsSize -1;i++) {
         for(int j = i+1; j< numsSize;j++) {
             if(nums[j] == nums[i]) {
                 if (j-i <= k) {
-                    return 1;
+                    return true;
                 }
             }
         }
     }
-    return 0;
+    return false;
 }
 
-//hashTable 实现
+//hashTable 实现、链表存储方式
 //先定义hashTable
 typedef struct ListNode {
     int x, d;
@@ -702,11 +718,82 @@ int insert(HashTable *h, int x, int d) {
 }
 
 
-int containsNearbyDuplicatezzz(int* nums, int numsSize, int k) {
+bool containsNearbyDuplicatezzz(int* nums, int numsSize, int k) {
     HashTable *h = initHashTable(numsSize);
     for (int i = 0; i < numsSize; i++) {
-        if (search(h, nums[i], i, k)) return 1;
+        if (search(h, nums[i], i, k)) return true;
         insert(h, nums[i], i);
     }
-    return 0;
+    return false;
 }
+
+
+/*
+//哈希表、数组方式
+struct DataItem {
+    int data;
+    int key;
+};
+
+struct DataItem *hashArray[20];
+struct DataItem *dummyItem;
+struct DataItem *item;
+
+int hashCode(int key) {
+    return key % 20;
+}
+
+struct DataItem *searchHashArray(int key) {
+    int hashIndex = hashCode(key);
+    while (hashArray[hashIndex] != NULL) {
+        if (hashArray[hashIndex] ->key == key) {
+            return hashArray[hashIndex];
+        }
+        ++hashIndex;
+        hashIndex %= 20;
+    }
+    return NULL;
+}
+
+void inseartHashArray(int key, int data) {
+    struct DataItem *item = (struct DataItem *)malloc(sizeof(struct DataItem));
+    item ->data = data;
+    item ->key = key;
+
+    int hashIndex = hashCode(key);
+    while (hashArray[hashIndex] != NULL && hashArray[hashIndex] ->key != -1) {
+        ++hashIndex;
+        hashIndex %= 20;
+    }
+    hashArray[hashIndex] = item;
+}
+
+struct DataItem *deleteHashArray(struct DataItem *item) {
+    int key = item ->key;
+    int hashIndex = hashCode(key);
+    while (hashArray[hashIndex] != NULL) {
+        if (hashArray[hashIndex] ->key == key) {
+            struct DataItem *temp = hashArray[hashIndex];
+            hashArray[hashIndex] = dummyItem;
+            return temp;
+        }
+        ++hashIndex;
+        hashIndex %= 20;
+    }
+    return NULL;
+}
+
+void displayHashArray() {
+    int i = 0;
+    for (i = 0; i<20; i++) {
+        if (hashArray[i] != NULL) {
+            printf("(%d,%d)",hashArray[i]->key,hashArray[i]->data);
+        }else {
+            printf(" ~ ");
+        }
+    }
+    printf("\n");
+}
+ */
+
+
