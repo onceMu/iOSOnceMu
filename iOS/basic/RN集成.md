@@ -130,5 +130,8 @@ spec.public_header_files ='yoga/Yoga.h','yoga/YGEnums.h','yoga/YGMacros.h'
 
 11.pod 中加入use_frameworks! 
 
+12. 新的错误
+在React 的pod framework 中 需要加入 DoubleConversion.framework 和 glog.framework 依赖
+
 
 
